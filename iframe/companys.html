@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,initial-scale=1,user-scalable=no" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+		<title>企企通</title>
+		<link rel="shortcut icon" href="https://51qqt.com/img/qqtlogo.ico" />
+		<meta  name="Keywords" content="">
+		<meta  name="Description" content="">
+		<link rel="stylesheet" href="https://51qqt.com/css/flex-layout.css" />
+		<link rel="stylesheet" href="https://51qqt.com/css/reset.css" />
+        <!-- 头部底部样式 -->
+		<link rel="stylesheet" href="https://51qqt.com/css/index.css" />
+		<!-- 首页样式 -->
+		<link rel="stylesheet" href="https://51qqt.com/css/homestyle.css" />
+		<script src="https://51qqt.com/js/jquery.min.js"></script>
+		<script src="https://51qqt.com/js/load.js"></script>
+		<script type="text/javascript">
+			load('axios')
+		</script>
+	</head>
+	<body>
+		<div id="appIframe">
+            <div class="padBg bggray padCompanys">
+				<div class="tac home_product_title PingFangSCMedium">信赖之选，<span class="colorblue">500</span>强和<span class="colorblue">30+</span>行业领军企业都在用</div>
+				<div class="home_Case_companys flex-column flex-center flex-middle" ref='box' @mouseenter="enter" @mouseleave="leave">
+                    <div class="home_Case_companylistshow" v-for="(item,index) in caseCompanylist" >
+                        <!-- <div class="home_Case_companylist" :style="index%2==0?{transform: 'translateX('+ tranL+ 'px)'}:{transform: 'translateX('+ tranR+ 'px)'}"> -->
+						<div class="home_Case_companylist" :style="{transform: 'translateX('+ tranL+ 'px)'}">
+                            <div class="home_Case_companyImg" v-for="itemchind in item"><img :src="itemchind.companyLogo" class="imgsize" alt="itemchind.companyName"></div>
+                            <div class="home_Case_companyImg" v-for="itemchind in item"><img :src="itemchind.companyLogo" class="imgsize" alt="itemchind.companyName"></div>
+							<div class="home_Case_companyImg" v-for="itemchind in item"><img :src="itemchind.companyLogo" class="imgsize" alt="itemchind.companyName"></div>
+                        </div>
+                    </div>
+				</div>
+<!--				<div><div class="f16 colorbai home_Case_More">更多行业案例</div></div>-->
+				<div ><a class="f16 colorbai home_Case_More" @click="tzMoremanu">更多行业案例</a></div>
+			</div>
+		</div>
+	</body>
+	
+	<script>
+		var vm = new Vue({
+			el:'#appIframe',
+			data(){
+				return {
+					caseCompanylist:[],
+                    tranL:0,
+                    tranR:-1660,
+                    setTimetrans:null,
+					showCase:false,
+					clientWidth:0,
+				}
+			},
+			watch: {
+			},
+			created(){
+				this.clientWidth = document.documentElement.clientWidth
+                getHost('els')
+				this.getdata()
+
+                let that = this
+                that.setTimetrans = setInterval(()=>{
+                    that.tranL--
+                    that.tranR++
+                    if(that.tranL==-1550){
+                        that.tranL=0
+                    }
+                    if(that.tranR==-110){
+                        that.tranR=-1660
+                    }
+                },40)
+			},
+			mounted(){
+				if (parent.document.location.pathname.includes("index.html")&&!parent.document.location.pathname.includes("purchase")){
+					this.showCase=true
+				}
+			},
+			methods: {
+                getdata(){
+                    let that = this
+                    // 获取500强图片
+					var _getcaseCompanylist = p => get('/consumer/noToken/queryLogo', p);
+					_getcaseCompanylist({type:'1'})
+					.then(res => {
+						that.caseCompanylist = res.result
+						var iframes=$(window.parent.document).find("iframe")
+						console.log('iframes',iframes)
+						for (var i=0;i<iframes.length;i++){
+							if ($(iframes[i]).attr("src").includes("companys.html")){
+								var height=750
+								if(this.clientWidth<=582){
+									height=557
+								}else if(that.showCase&&this.clientWidth>582){
+									height=864
+								}
+								var iframeHeight=(height-(6-that.caseCompanylist.length)*92)+"px;"
+								$(iframes[i]).attr("style","width: 100%;height:"+iframeHeight)
+							}
+
+						}
+					})
+					.catch(err => {
+						console.log(err,'_getcaseCompanylist获取数据异常');
+					})
+                },
+                enter(){
+                    clearInterval(this.setTimetrans)
+                },
+                leave(){
+                    let that = this
+                    that.setTimetrans = setInterval(()=>{
+                        that.tranL--
+                        that.tranR++
+                        if(that.tranL==-1550){
+                            that.tranL=0
+                        }
+                        if(that.tranR==-110){
+                            that.tranR=-1660
+                        }
+                    },40)
+                },
+				tzMoremanu(){
+					parent.location.href = "https://51qqt.com/case-study.html"
+				}
+			},
+			computed:{
+			},
+		})
+    </script>
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,initial-scale=1,user-scalable=no" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+		<title>企企通</title>
+		<link rel="shortcut icon" href="https://51qqt.com/img/qqtlogo.ico" />
+		<meta  name="Keywords" content="">
+		<meta  name="Description" content="">
+		<link rel="stylesheet" href="https://51qqt.com/css/flex-layout.css" />
+		<link rel="stylesheet" href="https://51qqt.com/css/reset.css" />
+		<!-- 头部底部样式 -->
+		<link rel="stylesheet" href="https://51qqt.com/css/index.css" />
+		<!-- 首页样式 -->
+		<link rel="stylesheet" href="https://51qqt.com/css/homestyle.css" />
+        <!-- 解决方案样式 -->
+        <link rel="stylesheet" href="https://51qqt.com/css/solutions.css">
+        <!-- PaaS平台样式 -->
+        <link rel="stylesheet" href="https://51qqt.com/css/paas.css">
+		<script src="https://51qqt.com/js/jquery.min.js"></script>
+        <script src="https://51qqt.com/js/home.js"></script>
+		<script src="https://51qqt.com/js/load.js"></script>
+		<script type="text/javascript">
+			load('axios')
+		</script>
+	</head>
+	<body>
+		<div id="appIframe">
+            <div class="manufacturing_bg manufacturing_bgImg">
+				<div class="maxwidth">
+					<div class="PingFangSCMedium tac home_title">成就更多客户成功，他们都选择了企企通</div>
+					<!-- <div v-if="clientWidth<=582">
+						<div v-if="index==navsindex" class="anileftIn" @touchstart="handelTouchStart" @touchend="handelTouchend" v-for="(item,index) in achieveCustlist">
+							<div class="bgbai flex-column flex-middle flex-between">
+								<div class="flex-column flex-middle manufacturing_case_navs">
+									<div class="flex-column flex-middle manufacturing_case_nav">
+										<div class="manufacturing_case_navsImg"><img :src="item.logo" class="imgsize" :alt="item.consumerId_dictText"></div>
+									</div>
+								</div>
+							</div>
+							<div class="">
+								<div class="porelative">
+									<div class="manufacturing_listleft colorbai">
+										<div class="homeHead_appleStytle achieveCase_title" v-html="item.title"></div>
+										<div class="f16 manufacturing_listleft_text colorbai" v-html="item.intro"></div>
+										<div class="flex-column flex-middle flex-right f16 tac">
+											<div class="manufacturing_listleft_but1 PingFangSCMedium" @click="caseStudyInfo(item)">查看案例</div>
+											<div class="PingFangSCMediumNormal" :class="index==0?'manufacturing_listleft_but2':'manufacturing_listleft_but3'" v-for="(items,index) in item.tags">{{items}}</div>
+										</div>
+										
+									</div>
+									<div class="manufacturing_listright_img"><img :src="item.backgroundImage" class="imgsize" :alt="item.title"></div>
+								</div>
+							</div>
+						</div>
+						<div class="homeHead_tabs flex-column flex-center" >
+							<div v-for="(item,index) in achieveCustlist" :class="index==navsindex?'homeHead_tab':''" @click="changetab(index)"></div>
+						</div>
+					</div> -->
+					<div @touchstart="handelTouchStart" @touchend="handelTouchend" >
+						<div class="bgbai flex-column flex-middle flex-between phone_achieve_postion">
+							<div class="flex-column flex-middle manufacturing_case_navs">
+								<div class="flex-column flex-middle flex-center" v-for="(item,index) in achieveCustlist" :class="index==navsindex?'manufacturing_case_nav':''" @mouseenter="changenavsindex(index)">
+									<div class="manufacturing_case_navsImg"><img :src="item.logo" class="imgsize" :alt="item.consumerId_dictText"></div>
+								</div>
+							</div>
+							<div class="flex-column flex-middle flex-center manufacturing_case_but" @click="tzMoremanu"><div class="f14 manufacturing_case_butsty tac homeHead_appleStytle_normal">查看更多案例</div></div>
+						</div>
+						<div class="">
+							<div class="porelative" v-for="(item,index) in achieveCustlist" v-if="index==navsindex">
+								<div class="manufacturing_listleft colorbai">
+									<div class="homeHead_appleStytle achieveCase_title" v-html="item.title"></div>
+									<div class="f16 manufacturing_listleft_text colorbai" v-html="item.intro"></div>
+									<div class="flex-column flex-middle flex-right f16 tac">
+										<div class="manufacturing_listleft_but1 PingFangSCMedium" @click="caseStudyInfo(item)">查看案例</div>
+										<div class="PingFangSCMediumNormal" :class="index==0?'manufacturing_listleft_but2':'manufacturing_listleft_but3'" v-for="(items,index) in item.tags">{{items}}</div>
+									</div>
+									
+								</div>
+								<div class="manufacturing_listright_img"><img :src="item.backgroundImage" class="imgsize" :alt="item.title"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	
+	<script>
+		var vm = new Vue({
+			el:'#appIframe',
+			data(){
+				return {
+					achieveCustlist:[],
+                    navsindex:1,
+					pageName: '7',
+					clientWidth:0,
+					startTime: 0,
+					startX: 0,
+					startY: 0,
+				}
+			},
+			watch: {
+			},
+			created(){
+				this.clientWidth = document.documentElement.clientWidth
+                getHost('els')
+				if(getQueryVariable('name')){
+					this.pageName = getQueryVariable('name')
+				}
+				this.getdata()
+			},
+			mounted(){
+
+				if(getQueryVariable('name')){
+					this.pageName = getQueryVariable('name')
+				}
+			},
+			methods: {
+                getdata(){
+                    let that = this
+                    // 获取500强图片
+					var _getachieveCustlist = p => get('/works/caseWork/noToken/queryByHot', p);
+					_getachieveCustlist({industryOrAreas: that.pageName})
+					.then(res => {
+						var result=res.result;
+						result.forEach((itemValue)=>{
+							var tag=itemValue.tags;
+							if (tag){
+								if (tag.includes(",")){
+									itemValue.tags=tag.split(",")
+								}else if (tag.includes("，")){
+									itemValue.tags=tag.split("，")
+								}else {
+									itemValue.tags=[tag]
+								}
+							}
+						})
+
+						that.achieveCustlist = result
+					})
+					.catch(err => {
+						console.log(err,'_getachieveCustlist获取数据异常');
+					})
+                },
+                changenavsindex(index){
+                    this.navsindex = index
+                },
+				tzMoremanu(){
+					parent.location.href = "https://51qqt.com/case-study.html"
+				},
+				caseStudyInfo(item){
+					if (!item.caseClassify.includes('5')){
+						parent.location.href="https://51qqt.com/caseStudyInfo.html?id="+item.id
+					}
+				},
+				handelTouchStart(e){
+					this.startTime = Date.now()
+					this.startX = e.changedTouches[0].clientX;
+					this.startY = e.changedTouches[0].clientY;
+				},
+				handelTouchend(e) {
+					if(this.clientWidth>=582){
+						return
+					}
+					let endTime = Date.now()
+					let endX = e.changedTouches[0].clientX;
+					let endY = e.changedTouches[0].clientY;
+					if (endTime - this.startTime > 2000) { //正常操作不会大于2秒
+						return
+					}
+					let direction = '';
+					//如果Y轴移动小于10,证明是上下滑动,所以不做处理
+					if (Math.abs(endX - this.startX) > 10 && Math.abs(endY - this.startY) < 100) {
+						direction = endX - this.startX > 0 ? 'right' : 'left'
+					}else{
+						return
+					}
+					if(direction=='right'){
+						if(this.navsindex!=0){
+							this.navsindex--
+						}
+					}else{
+						// console.log(this.SolutionList[this.navstopIndex])
+						if(this.achieveCustlist.length-1>this.navsindex){
+							this.navsindex++
+						}
+					}
+					// console.log(direction);
+				},
+				changetab(index){
+					this.navsindex = index
+				},
+			},
+			computed:{
+			},
+		})
+    </script>
+</html>

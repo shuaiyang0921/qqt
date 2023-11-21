@@ -1,0 +1,6 @@
+.tags{height: 54px;text-align: center;line-height: 54px;border:1px solid #FF761A;border-radius:16px 0 16px 0;color: #FF761A;background-color: rgba(255,118,26,0.1);padding: 0 42px;}
+.tab_intro{margin-top: 40px;color: #555555;}
+@media screen and (max-width:582px) {
+    .tags{height: 40px;line-height: 40px;font-size: 16px;padding: 0 22px;}
+    .tab_intro{margin-top: 20px;}
+}

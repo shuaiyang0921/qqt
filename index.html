@@ -1,0 +1,1527 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,initial-scale=1,user-scalable=no" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>企企通-数字化采购管理平台领导品牌,专注SRM采购供应链解决方案</title>
+		<link rel="shortcut icon" href="https://51qqt.com/img/qqtlogo.ico" />
+		<meta  name="Keywords" content="">
+		<meta  name="Description" content="<p>企企通是国内一站式数字化采购管理平台领军者。专注SRM采购供应链管理及供应链赋能解决方案，帮助企业构建数字化采购平台。实现全行业、全品类、全模块供应链与采购管理。助力1000+家企业完成数字化采购转型与升级，使企业采购更合规透明、降本增效。<br/></p>">
+		<link rel="stylesheet" href="https://51qqt.com/css/flex-layout.css" />
+		<link rel="stylesheet" href="https://51qqt.com/css/reset.css" />
+		<!-- 头部底部样式 -->
+		<link rel="stylesheet" href="https://51qqt.com/css/index.css" />
+		<!-- 首页样式 -->
+		<link rel="stylesheet" href="https://51qqt.com/css/homestyle.css" />
+		<link rel="stylesheet" href="https://51qqt.com/css/caseStudy.css" />
+		<link rel="stylesheet" href="https://51qqt.com/css/animate.min.css" />
+		<link rel="stylesheet" href="https://51qqt.com/css/cooperation.css" />
+		<script src="https://51qqt.com/js/jquery.min.js"></script>
+		<script src="https://51qqt.com/js/load.js"></script>
+		<script type="text/javascript">
+			load('axios')
+		</script>
+	</head>
+	<body>
+		<div id="app" v-cloak>
+			<div class="header">
+                <div class="flex-column flex-between homeHead f16 maxwidth">
+                    <div class="flex-column flex-middle">
+                        <a class="logosize" href="https://51qqt.com/index.html"><img src="https://51qqt.com/img/logo.png" class="imgsize" alt="企企通"></a>
+                        <div class="flex-column flex-middle homenavs">
+                            <ul class="flex-column flex-middle homeNav" v-if="topNavShow">
+                                <li class="hobverPopUp">
+                                    <div class="hobverPopUp_text"><span>{{topNav[0].name}}</span><span class="iconxia"></span></div>
+                                    <div class="homeHead_popUpStyle bghead">
+                                        <div class="maxwidth">
+                                            <div class="flex-column xian_headsolid">
+                                                <div class="homeHead_productpopUp_saas">
+                                                    <div class="f18 homeHead_appleStytle homeHead_productpopUp_left">{{topNav[0].childNavs[0].name}}</div>
+                                                </div>
+                                                <div class="homeHead_productpopUp_right f14 flex-column flex-between">
+                                                    <div class="homeHead_productpopUp_rightText">
+														<div style="position: absolute"><img :src="topNav[0].childNavs[0].childNavs[0].icon" class="saasNavItemIcon"></div>
+                                                        <div class="homeHead_productpopUp_title homeHead_appleStytle"><a :href="topNav[0].childNavs[0].childNavs[0].link">{{topNav[0].childNavs[0].childNavs[0].name}}</a><span class="iconright"></span></div>
+                                                        <div class="f12 homeHead_productpopUp_subheading" v-html="topNav[0].childNavs[0].childNavs[0].description"></div>
+                                                        <a v-for="(navItem,index) in topNav[0].childNavs[0].childNavs[0].childNavs" :href="navItem.link">{{navItem.name}}</a>
+                                                    </div>
+                                                    <div class="homeHead_productpopUp_rightText">
+														<div style="position: absolute"><img :src="topNav[0].childNavs[0].childNavs[1].icon" class="saasNavItemIcon"></div>
+                                                        <div class="homeHead_productpopUp_title homeHead_appleStytle"><a :href="topNav[0].childNavs[0].childNavs[1].link">{{topNav[0].childNavs[0].childNavs[1].name}}</a><span class="iconright"></span></div>
+                                                        <div class="f12 homeHead_productpopUp_subheading" v-html="topNav[0].childNavs[0].childNavs[1].description"></div>
+														<a v-for="(navItem,index) in topNav[0].childNavs[0].childNavs[1].childNavs" :href="navItem.link">{{navItem.name}}</a>
+                                                    </div>
+                                                    <div>
+                                                        <a class="homeHead_productpopUp_rightText" :href="topNav[0].childNavs[0].childNavs[2].link">
+															<div style="position: absolute"><img :src="topNav[0].childNavs[0].childNavs[2].icon" class="saasNavItemIcon"></div>
+                                                            <div class="homeHead_productpopUp_title homeHead_appleStytle">{{topNav[0].childNavs[0].childNavs[2].name}}<span class="iconright colorblue"></span></div>
+                                                            <div class="f12 homeHead_productpopUp_subheading" v-html="topNav[0].childNavs[0].childNavs[2].description"></div>
+                                                        </a>
+                                                        <div class="homeHead_productpopUp_rightText">
+															<div style="position: absolute"><img :src="topNav[0].childNavs[0].childNavs[3].icon" class="saasNavItemIcon"></div>
+                                                            <div class="homeHead_productpopUp_title homeHead_appleStytle"><a :href="topNav[0].childNavs[0].childNavs[3].link">{{topNav[0].childNavs[0].childNavs[3].name}}</a><span class="iconright"></span></div>
+                                                            <div class="f12 homeHead_productpopUp_subheading" v-html="topNav[0].childNavs[0].childNavs[3].description"></div>
+                                                        </div>
+                                                        <div class="homeHead_productpopUp_rightText">
+															<div style="position: absolute"><img :src="topNav[0].childNavs[0].childNavs[4].icon" class="saasNavItemIcon"></div>
+															<div class="homeHead_productpopUp_title homeHead_appleStytle"><a :href="topNav[0].childNavs[0].childNavs[4].link">{{topNav[0].childNavs[0].childNavs[4].name}}</a><span class="iconright"></span></div>
+															<div class="f12 homeHead_productpopUp_subheading" v-html="topNav[0].childNavs[0].childNavs[4].description"></div>
+														</div>
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div class="flex-column">
+                                                <div class="homeHead_productpopUp_saas">
+                                                    <div class="f18 homeHead_appleStytle homeHead_productpopUp_paas_left">{{topNav[0].childNavs[1].name}}</div>
+                                                </div>
+                                                <div class="flex-column flex-between homeHead_productpopUp_paas_right">
+                                                    <a v-for="(passNavItem,index) in topNav[0].childNavs[1].childNavs" :href="passNavItem.link">
+														<div style="position: relative"><img style="width: 44px;height: 44px;position: absolute;top: -29px;left: 200px;" :style="index==0?'top:-27px':''" :src="passNavItem.icon"></div>
+                                                        <div class="f14 homeHead_appleStytle">{{passNavItem.name}}</div>
+                                                        <div class="f12 homeHead_productpopUp_paas_right_subheading" v-html="passNavItem.description"></div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class='hobverPopUp'>
+                                    <span class="hobverPopUp_text">{{topNav[1].name}}</span><span class="iconxia"></span>
+                                    <div class="bghead homeHead_popUpStyle">
+                                        <div class=" maxwidth">
+                                            <div v-for="(solutionNavItem,index) in topNav[1].childNavs" class="flex-column xian_headsolid">
+                                                <div class="homeHead_solutionPopUp_left">
+                                                    <div class="f18 homeHead_appleStytle homeHead_solutionPopUp_leftTitle">
+														{{solutionNavItem.name}}</div>
+                                                </div>
+                                                <div class="homeHead_productpopUp_right f14 flex-column">
+                                                    <a v-for="(solutionNavItemChild,index) in solutionNavItem.childNavs" class="homeHead_solutionPopUp_rightText" :href="solutionNavItemChild.link">
+														<div style="position: absolute">
+															<img :src="solutionNavItemChild.icon" class="navIcon">
+														</div>
+                                                        <div class="f14 homeHead_productpopUp_title homeHead_appleStytle">{{solutionNavItemChild.name}}</div>
+                                                        <div class="f12 homeHead_solutionPopUp_subheading" v-html="solutionNavItemChild.description"></div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class='aHover'><a :href="topNav[2].link">{{topNav[2].name}}</a></li>
+                                <li class="hobverPopUp">
+                                    <span class="hobverPopUp_text"><a :href="topNav[3].link">{{topNav[3].name}}</a></span><span class="iconxia"></span>
+                                    <div class="bghead  homeHead_popUpStyle">
+                                        <div class="maxwidth">
+                                            <div class="flex-column">
+                                                <div class="homeHead_informationPopUp_left">
+                                                    <div class="f18 homeHead_informationPopUp_Title" :style="{backgroundImage: 'url('+topNav[3].childNavs[0].backgroundImage+')',backgroundRepeat: 'no-repeat', backgroundSize: '100% 100%'}">
+                                                        <div class="homeHead_appleStytle homeHead_informationPopUp_leftTitle">{{topNav[3].childNavs[0].name}}</div>
+                                                        <div class="f12 homeHead_solutionPopUp_subheading" v-html="topNav[3].childNavs[0].description"></div>
+                                                        <a class="f14 homeHead_registertil homeHead_playvidio colorbai" :href="topNav[3].childNavs[0].link">立即观看</a>
+                                                    </div>
+                                                </div>
+                                                <div class="homeHead_informationPopUp_right f14 flex-column">
+                                                    <a v-if="index!=0" v-for="(newsNavItem,index) in topNav[3].childNavs" class="homeHead_informationPopUp_rightText" :href="newsNavItem.link">
+														<div style="position: absolute">
+															<img :src="newsNavItem.icon" class="navIcon">
+														</div>
+                                                        <div class="f14 homeHead_productpopUp_title homeHead_appleStytle">{{newsNavItem.name}}<span class="iconrightgary"></span></div>
+                                                        <div class="f12 homeHead_solutionPopUp_subheading" v-html="newsNavItem.description"></div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="aHover"><a :href="topNav[4].link">{{topNav[4].name}}</a></li>
+                                <li class="hobverPopUp">
+                                    <span class="hobverPopUp_text">{{topNav[5].name}}</span><span class="iconxia"></span>
+                                    <div class="bghead homeHead_popUpStyle">
+                                        <div class="maxwidth">
+                                            <div class="flex-column flex-between flex-middle homeHead_aboutUsPopUp_padd">
+                                                <a v-for="(aboutNavItem,index) in topNav[5].childNavs" class="homeHead_aboutUsPopUp_Text" :href="aboutNavItem.link">
+													<div style="position: absolute">
+														<img :src="aboutNavItem.icon" class="aboutNavIcon">
+													</div>
+                                                    <div class="f14 homeHead_aboutUsPopUp_title homeHead_appleStytle">{{aboutNavItem.name}}<span class="iconrightgary"></span></div>
+                                                    <div class="f12 homeHead_solutionPopUp_subheading" v-html="aboutNavItem.description"></div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="flex-column flex-middle flex-right">
+                        <a class="flex-column flex-middle" href="tel:400-835-1881">
+                            <div class="iconsize"><img src="https://51qqt.com/img/home18.png" class="imgsize" alt="电话拨号"></div>
+                            <div class="homeHead_phone homeHead_appleStytle f18">400-835-1881</div>
+						</a>
+                        <a class="f16 homeHead_logintil" :href="baseInfo.fbk1">登录</a>
+                        <div class="f14 homeHead_registertil" @click="showregistermodal('',1,'')">注册体验</div>
+                    </div>
+                </div>
+				<div class="bgbai homephoneHead_height">
+					<div class="flex-column flex-between homephoneHead xian_head">
+						<a class="logosize" href="https://51qqt.com/index.html"><img src="https://51qqt.com/img/logo.png" class="imgsize" alt="企企通"></a>
+						<div class="flex-column flex-middle">
+							<a href="tel:400-835-1881" class="flex-column flex-middle">
+								<div class="iconsize"><img src="https://51qqt.com/img/home18.png" class="imgsize" alt="电话拨号"></div>
+								<div class="homeHead_phone homeHead_appleStytle f18">400-835-1881</div>
+							</a>
+							<div class="menu_buttonstyle">
+								<div class="menu_button">
+									<div class="bar"></div>
+									<div class="bar"></div>
+									<div class="bar"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="shownavs">
+						<div class="flex-column" style="height: 100%;">
+							<div class="f14 PingFangSCMediumBanner homephoneHead_left" v-if="topNavShow">
+								<a class="homephoneHead_leftList">{{topNav[0].name}}</a>
+								<a>{{topNav[1].name}}</a>
+								<a class="homephoneHead_left_link" href="https://51qqt.com/case-study.html">{{topNav[2].name}}</a>
+								<a>{{topNav[3].name}}</a>
+								<a class="homephoneHead_left_link" href="https://51qqt.com/cooperation.html">{{topNav[4].name}}</a>
+								<a>{{topNav[5].name}}</a>
+							</div>
+							<div class="homephoneHead_right f14">
+								<template v-if="topNavShow">
+									<div class="f14 PingFangSCMediumBanner homephoneHead_right_title">{{topNav[0].childNavs[0].name}}</div>
+									<div v-for="(saasNav,index) in topNav[0].childNavs[0].childNavs">
+										<div class="flex-column flex-between homephoneHead_navchild_Subhead">
+											<div style="position: absolute">
+												<img :src="saasNav.icon" style="width: 30px;height: 30px;position: absolute;top: -8px;left: -38px;">
+											</div>
+											<div>
+												<a :href="saasNav.link">{{saasNav.name}}</a>
+											</div>
+											<div v-if="index<2" class="homephoneHead_navicon" @click="changenavicon"><img src="https://51qqt.com/img/homephone_xia.png" class="imgsize" alt="企企通图标"></div>
+										</div>
+										<div class="shownavchild_text" v-if="index<2">
+											<a v-for="(saasNavItem,index) in saasNav.childNavs" class="homephoneHead_navchild_text" :href="saasNavItem.link">{{saasNavItem.name}}</a>
+										</div>
+									</div>
+								</template>
+
+
+								<div class="f14 PingFangSCMediumBanner homephoneHead_right_title"  v-if="topNavShow">
+									{{topNav[0].childNavs[1].name}}
+								</div>
+								<template v-if="topNavShow">
+									<div v-for="(paasNav,index) in topNav[0].childNavs[1].childNavs">
+										<div style="position: absolute">
+											<img :src="paasNav.icon" style="width: 30px;height: 30px;position: absolute;top: -8px;"/>
+										</div>
+										<a class="homephoneHead_navchild_text" :href="paasNav.link">{{paasNav.name}}</a>
+									</div>
+								</template>
+							</div>
+							<div class="homephoneHead_right f14">
+								<template v-if="topNavShow">
+									<template  v-for="(solutionNav,index) in topNav[1].childNavs">
+										<div class="f14 PingFangSCMediumBanner homephoneHead_right_title">{{solutionNav.name}}</div>
+										<div>
+											<a v-for="(solutionNavItem,index) in solutionNav.childNavs" :class="solutionNavItem.link?'homephoneHead_right_text':'homephoneHead_right_text cursorDefault'" :href="solutionNavItem.link">{{solutionNavItem.name}}</a>
+										</div>
+									</template>
+								</template>
+							</div>
+							<div class="homephoneHead_right f14">
+								<template v-if="topNavShow">
+									<div class="f14 PingFangSCMediumBanner homephoneHead_right_title">资讯中心</div>
+									<div>
+										<a v-if="index!=0" v-for="(newsNav,index) in topNav[3].childNavs" class="homephoneHead_right_text" :href="newsNav.link">{{newsNav.name}}</a>
+										<a class="homephoneHead_right_text" :href="topNav[3].childNavs[0].link">微视频</a>
+									</div>
+								</template>
+							</div>
+							<div class="homephoneHead_right f14">
+								<template v-if="topNavShow">
+									<div class="f14 PingFangSCMediumBanner homephoneHead_right_title">关于我们</div>
+									<div>
+										<a v-for="(aboutNav,index) in topNav[5].childNavs" class="homephoneHead_right_text" :href="aboutNav.link">{{aboutNav.name}}</a>
+									</div>
+								</template>
+							</div>
+						</div>
+						
+						<!-- <div class="homephoneHead_navs xian_head">
+							<div>
+								<div class="flex-column flex-between homephoneHead_nav">
+									<div class="f16 PingFangSCMedium">产品</div>
+									<div class="homephoneHead_navicon"><img src="https://51qqt.com/img/home44.png" class="imgsize" alt="企企通图标"></div>
+								</div>
+								<div class="homephoneHead_navchild f14">
+									<div class="homephoneHead_navchild_title colorblue">企业SaaS云</div>
+									<div>
+										<div class="flex-column flex-between homephoneHead_navchild_Subhead">
+											<div class="homeHead_productpopUp_titleicon1"><a href="https://srm.51qqt.com/index.html">采购云</a></div>
+											<div class="homephoneHead_navicon"><img src="https://51qqt.com/img/home44.png" class="imgsize" alt="企企通图标"></div>
+										</div>
+										<div class="shownavchild_text">
+											<a class="homephoneHead_navchild_text" href="https://srm.51qqt.com/supplier.html">供应商管理</a>
+											<a class="homephoneHead_navchild_text" href="https://srm.51qqt.com/sourcing.html">战略寻源</a>
+											<a class="homephoneHead_navchild_text" href="https://srm.51qqt.com/bidding.html">电子招投标</a>
+											<a class="homephoneHead_navchild_text" href="https://srm.51qqt.com/procurement.html">采购协同</a>
+											<a class="homephoneHead_navchild_text" href="https://srm.51qqt.com/contract.html">合同管理</a>
+											<a class="homephoneHead_navchild_text" href="https://srm.51qqt.com/resource.html">采购资源</a>
+											<a class="homephoneHead_navchild_text" href="https://srm.51qqt.com/analysis.html">采购分析</a>
+										</div>
+									</div>
+									<div>
+										<div class="flex-column flex-between homephoneHead_navchild_Subhead">
+											<div class="homeHead_productpopUp_titleicon2"><a href="https://mall.51qqt.com/mall.html">商城云</a></div>
+											<div class="homephoneHead_navicon"><img src="https://51qqt.com/img/home44.png" class="imgsize" alt="企企通图标"></div>
+										</div>
+										<div class="shownavchild_text">
+											<a class="homephoneHead_navchild_text" href="https://mall.51qqt.com/qqgouQ3.html">企企购商城旗舰版</a>
+											<a class="homephoneHead_navchild_text" href="https://mall.51qqt.com/qqgouQ3K.html">企企购商城标准版</a>
+											<a class="homephoneHead_navchild_text" href="https://mall.51qqt.com/b2b.html">B2B商城</a>
+											<a class="homephoneHead_navchild_text" href="https://mall.51qqt.com/juyuanchi.html">聚源池</a>
+										</div>
+									</div>
+									<div>
+										<div class="flex-column flex-between homephoneHead_navchild_Subhead">
+											<div class="homeHead_productpopUp_titleicon3"><a href="https://scf.51qqt.com/scf.html">赋能云</a></div>
+										</div>
+									</div>
+									<div>
+										<div class="flex-column flex-between homephoneHead_navchild_Subhead">
+											<div class="homeHead_productpopUp_titleicon4"><a href="https://51qqt.com/paas/mkt.html">营销云</a></div>
+										</div>
+									</div>
+									<div class="flex-column flex-between homephoneHead_navchild_Subhead">
+										<div class="homeHead_productpopUp_titleicon5"><a href="https://51qqt.com/purchase/darenTong.html">达人通</a></div>
+									</div>
+									<div class="homephoneHead_navchild_title colorblue">PaaS平台</div>
+									<a class="homephoneHead_navchild_text homeHead_productpopUp_paastitleicon1" href="https://51qqt.com/paas/apaas.html?navNum=0">APaaS应用开发平台</a>
+									<a class="homephoneHead_navchild_text homeHead_productpopUp_paastitleicon2" href="https://51qqt.com/paas/apaas.html?navNum=1">IPaaS集成开发平台</a>
+									<a class="homephoneHead_navchild_text homeHead_productpopUp_paastitleicon3" href="https://51qqt.com/paas/apaas.html?navNum=2">DPaaS数据中台</a>
+								</div>
+							</div>
+							<div>
+								<div class="flex-column flex-between homephoneHead_nav">
+									<div class="f16 PingFangSCMedium">解决方案</div>
+									<div class="homephoneHead_navicon"><img src="https://51qqt.com/img/home44.png" class="imgsize" alt="企企通图标"></div>
+								</div>
+								<div class="homephoneHead_navchild f14">
+									<div class="homephoneHead_navchild_title colorblue">行业解决方案</div>
+									<a class="homephoneHead_navchild_text homeHead_solutionPopUp_titleicon1" href="https://51qqt.com/solutions/manufacturing.html">高端制造</a>
+									<a class="homephoneHead_navchild_text homeHead_solutionPopUp_titleicon2" href="https://51qqt.com/solutions/construction.html">地产建筑</a>
+									<a class="homephoneHead_navchild_text homeHead_solutionPopUp_titleicon3" href="https://51qqt.com/solutions/retail.html">零售消费</a>
+									<a class="homephoneHead_navchild_text homeHead_solutionPopUp_titleicon4" href="https://51qqt.com/solutions/food.html">食品餐饮</a>
+									<a class="homephoneHead_navchild_text homeHead_solutionPopUp_titleicon5" href="https://51qqt.com/solutions/finance.html">金融保险</a>
+									<a class="homephoneHead_navchild_text homeHead_solutionPopUp_titleicon6" href="https://51qqt.com/solutions/pharmacy.html">生物制药</a>
+									<a class="homephoneHead_navchild_text homeHead_solutionPopUp_titleicon7" href="https://51qqt.com/solutions/energy.html">能源化工</a>
+									<a class="homephoneHead_navchild_text homeHead_solutionPopUp_titleicon8" href="https://51qqt.com/solutions/service.html">现代服务</a>
+									<div class="homephoneHead_navchild_title colorblue">领域解决方案</div>
+									<a class="homephoneHead_navchild_text homeHead_solutionPopUp_titleicon9 cursorDefault">生产</a>
+									<a class="homephoneHead_navchild_text homeHead_solutionPopUp_titleicon10 cursorDefault">商贸</a>
+									<a class="homephoneHead_navchild_text homeHead_solutionPopUp_titleicon11 cursorDefault">项目</a>
+									<a class="homephoneHead_navchild_text homeHead_solutionPopUp_titleicon12 cursorDefault">服务</a>
+									<a class="homephoneHead_navchild_text homeHead_solutionPopUp_titleicon13 cursorDefault">大宗</a>
+									<a class="homephoneHead_navchild_text homeHead_solutionPopUp_titleicon14 cursorDefault">办公</a>
+								</div>
+							</div>
+							
+							<a class="flex-column flex-between homephoneHead_nav PingFangSCMedium"  href="https://51qqt.com/case-study.html">
+								<div class="f16">客户案例</div>
+							</a>
+							<div>
+								<div class="flex-column flex-between homephoneHead_nav">
+									<div class="f16 PingFangSCMedium"><a href="https://51qqt.com/news.html">资讯中心</a></div>
+									<div class="homephoneHead_navicon"><img src="https://51qqt.com/img/home44.png" class="imgsize" alt="企企通图标"></div>
+								</div>
+								<div class="homephoneHead_navchild f14">
+									<a class="homephoneHead_navchild_text homeHead_solutionPopUp_titleicon15" style="margin-top: 0px;" href="https://51qqt.com/news/1.html">企业资讯</a>
+									<a class="homephoneHead_navchild_text homeHead_solutionPopUp_titleicon16" href="https://51qqt.com/news/events.html">市场活动</a>
+									<a class="homephoneHead_navchild_text homeHead_solutionPopUp_titleicon17" href="https://51qqt.com/news/4.html">干货分享</a>
+									<a class="homephoneHead_navchild_text homeHead_solutionPopUp_titleicon18" href="https://51qqt.com/news/reports.html">分析报告</a>
+								</div>
+							</div>
+							<a class="flex-column flex-between homephoneHead_nav PingFangSCMedium" href="https://51qqt.com/cooperation.html">
+								<div class="f16">合作伙伴</div>
+							</a>
+							<div>
+								<div class="flex-column flex-between homephoneHead_nav">
+									<div class="f16 PingFangSCMedium">关于我们</div>
+									<div class="homephoneHead_navicon"><img src="https://51qqt.com/img/home44.png" class="imgsize" alt="企企通图标"></div>
+								</div>
+								<div class="homephoneHead_navchild f14">
+									<a class="homephoneHead_navchild_text homeHead_aboutUsPopUp_titleicon1" style="margin-top: 0px;" href="https://51qqt.com/about.html">公司介绍</a>
+									<a class="homephoneHead_navchild_text homeHead_aboutUsPopUp_titleicon2" href="https://51qqt.com/honor.html">荣誉资质</a>
+									<a class="homephoneHead_navchild_text homeHead_aboutUsPopUp_titleicon3" href="https://51qqt.com/join-us.html">加入我们</a>
+									<a class="homephoneHead_navchild_text homeHead_aboutUsPopUp_titleicon4" href="https://51qqt.com/contact-us.html">联系我们</a>
+								</div>
+							</div>
+							
+						</div>
+						<div class="f14 homeHead_registertil tac" @click="showregistermodal('')">注册体验</div> -->
+					</div>
+				</div>
+			</div>
+			<div v-if="BanerImg.length">
+				<div class="homeHead_adver" >
+					<div class="homeHead_adverstyle flex-column" :style="{width: imgwidth}" v-show="BanerImg.length!=0">
+						<div @click="jumpLink(item.showButton,item.link)" :class="item.video?'homeHead_adverList_video':'homeHead_adverList'" v-for="(item,index) in BanerImg" :style="{backgroundImage: 'url('+ (clientWidth<=582?item.mobileImage:item.image) + ')',position:'relative','cursor':(item.showButton==1?'':'pointer')}" @touchstart="handelTouchStart" @touchend="bannerTouchend">
+							<div class="maxwidth">
+								<template v-if="!item.video">
+									<div class="homeHead_adver1_title homeHead_appleStytle" v-if="item.title" v-html="item.title"></div>
+									<div class="f20 homeHead_adver1_text" v-if="item.intro" v-html="item.intro"></div>
+									<a v-if="item.showButton==1&&clientWidth>780" class="f16 homeHead_registertil tac homeHead_appleStytle index_banner_register" style="position: absolute;bottom: 95px;width: auto;" @click="showregistermodal(item.link,2,index)">{{item.buttonText?item.buttonText:'注册体验'}}</a>
+								</template>
+								<template v-else>
+									<video :src="item.video" style="width:100%; height:100%;position: absolute;top: 0;left: 0; object-fit: fill" controls="controls" :poster="item.image"></video>
+									<video :src="item.video" style="width:100%; height:100%;position: absolute;top: 0;left: 0; object-fit: fill" controls="controls" :poster="item.image"></video>
+								</template>
+							</div>
+						</div>
+					</div>
+					<div class="homeHead_tabs flex-column flex-center" v-if="clientWidth>582">
+						<div v-for="(item,index) in BanerImg" :class="index==0?'homeHead_tab':''" @click="changetab(index)"></div>
+					</div>
+					<div v-else class="leftandright flex-column flex-between">
+						<div class="homeHead_left" @click="preftab()"><img src="./img/you.png" class="imgsize" alt=""></div>
+						<div class="homeHead_left" @click="nexttab()"><img src="./img/zuo.png" class="imgsize" alt=""></div>
+					</div>
+				</div>
+				<div class="flex-column flex-between homeHead_adver_bot">
+					<div class="homeHead_adver_botstyle" v-for="item in adverBotList">
+						<div class="homeHead_adver_botimg"><img v-if="item.icon" :src="item.icon" class="imgsize" alt=""></div>
+						<div class="homeHead_adver_botright">
+							<div class="f16 PingFangSCMedium">{{clientWidth>780?item.title:item.fbk1}}</div>
+							<div class="f12 homeHead_adver_bottext">{{item.intro}}</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div v-if="firstdemo.length" class="wow animate__fadeInUp " data-wow-duration="1s">
+				<div class="PingFangSCMedium tac home_Enabtitle">双向赋能，构建企业供应链采购数字化协同平台</div>
+				<div class="home_Enabling">
+					<template  v-for="(item,index) in firstdemo">
+						<div >
+							<div class="flex-column flex-between" v-if="index==0">
+								<div class="home_Enabling_left">
+									<div class="f26 PingFangSCMedium">{{item.title}}</div>
+									<div class="f16 home_Enabling_Subhead" v-html="item.intro"></div>
+									<div class="f16 PingFangSCMedium home_Enabling_title">业务场景：</div>
+									<div class="f14 home_Enabling_text" v-for="itchenk in item.description.split(',')">{{itchenk}}</div>
+									<div class="f14 homeHead_appleStytle home_Enabling_but homeHead_registertil colorbai" @click="showregistermodal('',4,'')">注册体验</div>
+								</div>
+								<div class="home_Enabling_rightimg"><img :src="item.image" class="imgsize" :alt="item.title"></div>
+							</div>
+							<div class="flex-column flex-between" v-if="index==1">
+								<div class="home_Enabling_leftimg"><img :src="item.image" class="imgsize" :alt="item.title"></div>
+								<div class="home_Enabling_right">
+									<div class="f26 PingFangSCMedium">{{item.title}}</div>
+									<div class="f16 home_Enabling_Subhead" v-html="item.intro"></div>
+									<div class="f16 PingFangSCMedium home_Enabling_title">业务场景：</div>
+									<div class="f14 home_Enabling_text" v-for="itchenk in item.description.split(',')">{{itchenk}}</div>
+									<div class="f14 homeHead_appleStytle home_Enabling_but homeHead_registertil colorbai" @click="showregistermodal('',4,'')">注册体验</div>
+								</div>
+							</div>
+						</div>
+						<div class="flex-column flex-between showEnablingimg" v-if="index==0" style="background-color: #F7F8FA;height: 130px;position: relative">
+							<img src="https://51qqt.com/img/home163.png" style="width: 65%;height: 140%;position: absolute;top: -22px;left: 24%">
+						</div>
+					</template>
+				</div>
+			</div>
+			
+			
+			<div v-if="productSaasList.length" class="home_product wow animate__fadeInUp" data-wow-duration="1s">
+				<div class="maxwidth">
+					<div class="tac home_product_title PingFangSCMedium">产品矩阵：采购全链条业务闭环、开放</div>
+					<div class="f26 homeHead_appleStytle">SaaS云</div>
+					<div class="flex-column" style="margin-bottom: 24px">
+						<div v-if="index==0" class="home_product_saas_first projection" v-for="(item,index) in productSaasList" @click="trunPaasPage(item.remark)">
+							<div class="flex-item-7">
+								<div class="home_product_saasimg">
+									<img :src="item.icon" class="imgsize" :alt="item.intro">
+								</div>
+							</div>
+							<div class="flex-item-17">
+								<div class="home_product_saasTitle PingFangSCMedium">{{item.intro}}</div>
+								<div class="f14 home_product_saasText" v-html="item.description"></div>
+								<a class="home_more f14 colorblue" style="float: left" :href="item.remark">
+									了解更多
+									<span class="home_product_saasMoreicon"><img src="https://51qqt.com/img/home83.png" class="imgsize" alt="了解更多">
+									</span>
+								</a>
+							</div>
+						</div>
+						<div class="flex-column flex-between home_product_saasList">
+							<div v-if="index!=0"  class="home_product_saas projection" v-for="(item,index) in productSaasList" @click="trunPaasPage(item.remark)">
+								<div class="flex-item-7">
+									<div class="home_product_saasimg">
+										<img :src="item.icon" class="imgsize" :alt="item.intro">
+									</div>
+								</div>
+								<div class="flex-item-17">
+									<div class="home_product_saasTitle PingFangSCMedium">{{item.intro}}</div>
+									<div class="f14 home_product_saasText" v-html="item.description"></div>
+									<a class="home_more f14 colorblue" style="float: left">
+										了解更多
+										<span class="home_product_saasMoreicon"><img src="https://51qqt.com/img/home83.png" class="imgsize" alt="了解更多">
+										</span>
+									</a>
+								</div>
+							</div>
+						</div>
+						
+					</div>
+					<div class="f26 homeHead_appleStytle">PaaS平台</div>
+					<div class="flex-column flex-between ">
+						<div class="home_product_paas projection flex-column" v-for="item in productPaasList" @click="trunPaasPage(item.remark)">
+							<div class="home_product_paasimg"><img :src="item.icon" class="imgsize" :alt="item.intro"></div>
+							<div class="home_product_paasright">
+								<div class="home_product_paasTitle PingFangSCMedium">{{item.intro}}</div>
+								<div class="f14 home_product_saasText" v-html="item.description"></div>
+								<a class="home_more f14 colorblue">
+									了解更多
+									<span class="home_product_saasMoreicon">
+										<img src="https://51qqt.com/img/home83.png" class="imgsize" alt="了解更多">
+									</span>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div v-if="competitiveList.length" class="home_padd wow animate__fadeInUp" data-wow-duration="1s">
+				<div class="maxwidth">
+					<div class="tac home_product_title PingFangSCMedium">通过数字化采购创造价值，提升企业竞争力</div>
+					<div class="flex-column flex-between">
+						<div class="home_competitive_list projection flex-column" v-for="item in competitiveList">
+							<div class="home_competitive_listleft tac" :style="{backgroundImage: 'url('+ (clientWidth<=780?item.mobileImage.replace(/\s/g,'%20'):item.image.replace(/\s/g,'%20')) + ')'}">
+								<div class="home_competitive_listImg"><img :src="item.logo" class="imgsize" :alt="item.title"></div>
+								<div class="f24 colorbai PingFangSCMedium">{{item.description}}</div>
+							</div>
+							<div class="home_competitive_listright">
+								<div class="f20 PingFangSCMedium">{{item.title}}</div>
+								<div class="f14 home_competitive_listtext" v-html="item.intro"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="home_Solution wow animate__fadeInUp" data-wow-duration="1s">
+				<div class="maxwidth">
+					<div class="tac home_product_title PingFangSCMedium home_Solution_title">我们为全行业提供更适用的客户解决方案</div>
+					<div class="f20 tac home_Solution_tabs flex-column">
+						<div v-for="(item,index) in SolutionList" @mouseenter="changenavstop(index,item)" :class="index==1?caseTabClass1:caseTabClass2" >{{item[1][0].type_dictText}}</div>
+					</div>
+					<div class="flex-column flex-top home_Solution_item" v-for="(item,index) in SolutionList" :class="index==navstopIndex?'showitem':''" @touchstart="handelTouchStart" @touchend="handelTouchend">
+						<div class="f16 home_Solution_left home_Solutionleft">
+							<div v-for="(itemnavs,indexnavs) in item[0]" :class="indexnavs==Solutionindex?'bgblue':''" @mouseenter=changeSolution(indexnavs,item[1],itemnavs)>{{itemnavs}}</div>
+							
+						</div>
+						<div class="flex-column home_Solution_rightwidth " v-for="(itemdemo,indexdemo) in item[1]" :style="indexdemo==Solutionindex?'display: flex;':''">
+							<div class="home_Solution_center">
+								<div class="f24 colorbai PingFangSCMedium">{{clientWidth>582?itemdemo.title:itemdemo.name_dictText}}</div>
+								<div class="f14 colorbai home_Solution_centerText">{{clientWidth>582?itemdemo.intro:itemdemo.mobileTitle}}</div>
+								<div class="home_Solution_centerImgs flex-column">
+									<div class="tac" v-for="(itemchenk,tagIndex) in itemdemo.tags" :class="tagIndex!=0?'home_Solution_centerImgsleft':''">
+										<div class="home_Solution_centerImg"><img :src="itemchenk.src" class="imgsize" :alt="itemchenk.title"></div>
+										<div class="f14 colorbai" style="max-width: 100px;">{{itemchenk.title}}</div>
+									</div>
+								</div>
+								<a v-if="itemdemo.link" class="f14 colorbai home_Solution_centerbut" :href="itemdemo.link">方案详情</a>
+							</div>
+							<div class="home_Solution_right flex-column">
+								<div class="home_Solution_rightimg" v-for="itemlogos in itemdemo.logos"><img :src="itemlogos" class="imgsize" alt="itemlogos" style="border-radius: 4px;"></div>
+							</div>
+						</div>
+						<div class="leftandright flex-column flex-between" v-if="clientWidth<=582">
+							<div class="homeHead_left" @click="prefSolution()"><img src="./img/you.png" class="imgsize" alt=""></div>
+							<div class="homeHead_left" @click="nextSolution()"><img src="./img/zuo.png" class="imgsize" alt=""></div>
+						</div>
+					</div>
+					<!-- <div class="flex-column flex-center home_Solution_tabs_nav">
+						<div v-for="(item,index) in SolutionList[navstopIndex][1]" :class="index==Solutionindex?'home_Case_tab':''"></div>
+					</div> -->
+				</div>
+			</div>
+			<div v-if="CaseList.length" class="home_Case wow animate__fadeInUp" data-wow-duration="1s">
+				<div class="maxwidth">
+					<div class="tac home_product_title PingFangSCMedium">与千家高成长企业一起，实现数字化采购</div>
+					<div style="position: relative;">
+						<div class="flex-column home_Case_info" :class="index==0?'home_Case_info_show':''" v-for="(item,index) in CaseList" @touchstart="handelTouchStart" @touchend="CaseTouchend">
+							<div class="home_Caseimg"><img :src="item.image" class="imgsize" :alt="item.tag"></div>
+							<div class="home_Case_inforight">
+								<div class="f16 home_Case_inforight_title">{{item.intro}}</div>
+								<div class="home_Case_inforightImg"><img :src="item.logo" class="imgsize" :alt="item.tag" style="width: auto;"></div>
+								<div class="flex-column flex-between">
+									<div class="f16 PingFangSCMedium">{{item.tag}}</div>
+									<a v-if="item.correlationId" class="f14 colorblue home_more" :href="'https://51qqt.com/newsInfo.html?id='+item.correlationId">了解更多<span class="home_product_saasMoreicon"><img src="https://51qqt.com/img/home83.png" class="imgsize" alt="了解更多"></span></a>
+								</div>
+							</div>
+						</div>
+						<div class="leftandright flex-column flex-between" v-if="clientWidth<=582">
+							<div class="homeHead_left" @click="prefCaseTab()"><img src="./img/you.png" class="imgsize" alt=""></div>
+							<div class="homeHead_left" @click="nextCaseTab()"><img src="./img/zuo.png" class="imgsize" alt=""></div>
+						</div>
+					</div>
+					<div class="home_Case_tabs flex-column flex-center ">
+						<div v-for="(item,index) in CaseList" :class="index==0?'home_Case_tab':''" @click="changeCaseTab(index)"></div>
+					</div>
+					
+				</div>
+			</div>
+			<iframe src="./iframe/companys.html" class="companyStyle wow animate__fadeInUp" data-wow-duration="1s" frameborder="0" scrolling="no"></iframe>
+			<div v-if="endorsedList.length" class="home_endorsed wow animate__fadeInUp" data-wow-duration="1s">
+				<div class="maxwidth">
+					<div class="tac home_product_title PingFangSCMedium colorbai">行业认可</div>
+					<div ref="industryRecognition" class="industryRecognition flex-column flex-between tac colorbai PingFangSCMedium home_endorsed_lists">
+						<div class="home_endorsed_list" v-for="item in endorsedList">
+							<div class="home_endorsed_title ">{{item.remark?item.remark:""}}{{item.tag?item.tag:item.title}}</div>
+							<div>{{item.intro}}</div>
+						</div>
+					</div>
+					<div class="home_endorsed_botLists">
+						<div class="maxwidth">
+							<div class="home_endorsed_botStyle flex-column flex-between tac">
+								<div class="home_endorsed_botList" v-for="item in endorsedBotList">
+									<div class="porelative">
+										<div class="home_endorsed_botImg"><img :src="item.companyLogo" class="imgsize" alt="item.companyName"></div>
+										<div class="home_endorsed_ying"><img src="https://51qqt.com/img/home_ying.png" class="imgsize"></div>
+									</div>
+									
+									<div class="f14 home_endorsed_bottext" v-html="item.description"></div>
+								</div>
+								<div class="home_endorsed_botList">
+									<div class="porelative">
+										<div class="home_endorsed_botImg"><img src="https://51qqt.com/img/home107.png" class="imgsize" alt=""></div>
+										<div class="home_endorsed_ying"><img src="https://51qqt.com/img/home_ying.png" class="imgsize"></div>
+									</div>
+									<a class="f14 colorblue home_more" href="https://51qqt.com/honor.html">更多行业认可<span class="home_product_saasMoreicon"><img src="https://51qqt.com/img/home83.png" class="imgsize" alt=""></span></a>
+								</div>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+			<div class="home_information wow animate__fadeInUp" data-wow-duration="1s">
+				<div class="maxwidth">
+					<div class="tac home_product_title PingFangSCMedium">精选资讯</div>
+					<div class="flex-column flex-around">
+						<div class="home_information_list projection">
+							<div class="flex-column flex-between flex-middle">
+								<div class="f20">企业资讯</div>
+								<a class="f14 colorblue home_more" href="https://51qqt.com/news.html?navnum=0">
+									<span class="information_more">了解更多</span>
+									<span class="home_product_saasMoreicon">
+										<img src="https://51qqt.com/img/home83.png" class="imgsize" alt="">
+									</span>
+								</a>
+							</div>
+							<div class="flex-column home_information_bot">
+								<div class="home_information_Img"><img src="https://51qqt.com/img/home108.png" class="imgsize" alt="企业资讯"></div>
+								<div class="f14 home_information_text">
+									<div v-for="(item,index) in information1" v-if="index<=3" @click="turnInformationDetail(item)">{{item.title}}</div>
+								</div>
+							</div>
+						</div>
+						<div class="home_information_list projection">
+							<div class="flex-column flex-between flex-middle">
+								<div class="f20">市场活动</div>
+								<a class="f14 colorblue home_more" href="https://51qqt.com/news.html?navnum=1">
+									<span class="information_more">了解更多</span>
+									<span class="home_product_saasMoreicon">
+										<img src="https://51qqt.com/img/home83.png" class="imgsize" alt="">
+									</span>
+								</a>
+							</div>
+							<div class="flex-column home_information_bot">
+								<div class="home_information_Img"><img src="https://51qqt.com/img/home109.png" class="imgsize" alt="市场活动"></div>
+								<div class="f14 home_information_text">
+									<div v-for="(item,index) in information2" v-if="index<=3" @click="turnInformationDetail(item)">{{item.title}}</div>
+								</div>
+							</div>
+						</div>
+						<div class="home_information_list projection">
+							<div class="flex-column flex-between flex-middle">
+								<div class="f20">干货分享</div>
+								<a class="f14 colorblue home_more" href="https://51qqt.com/news.html?navnum=2"><span class="information_more">了解更多</span><span class="home_product_saasMoreicon"><img src="https://51qqt.com/img/home83.png" class="imgsize" alt=""></span></a>
+							</div>
+							<div class="flex-column home_information_bot">
+								<div class="home_information_Img"><img src="https://51qqt.com/img/home110.png" class="imgsize" alt="干货分享"></div>
+								<div class="f14 home_information_text">
+									<div v-for="(item,index) in information3" v-if="index<=3" @click="turnInformationDetail(item)">{{item.title}}</div>
+								</div>
+							</div>
+						</div>
+						<div class="home_information_list projection">
+							<div class="flex-column flex-between flex-middle">
+								<div class="f20">微视频</div>
+								<a class="f14 colorblue home_more" href="https://51qqt.com/news.html?navnum=4"><span class="information_more">了解更多</span><span class="home_product_saasMoreicon"><img src="https://51qqt.com/img/home83.png" class="imgsize" alt=""></span></a>
+							</div>
+							<div class="flex-column home_information_bot">
+								<div class="home_information_Img"><img src="https://51qqt.com/img/home111.png" class="imgsize" alt="微视频"></div>
+								<div class="f14 home_information_text">
+									<div v-for="(item,index) in information4" v-if="index<=3" @click="turnInformationDetail(item)">{{item.title}}</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div v-if="partnersImg" class="home_partners wow animate__fadeInUp" data-wow-duration="1s">
+				<div class="maxwidth" :style="{backgroundImage: 'url('+ partnersImg + ')'}">
+					<div class="home_index_partners_bgsty porelative">
+						<div class="tac home_product_title PingFangSCMedium home_partners_img">合作伙伴</div>
+						<div class="home_partners_but"><a class="f16 colorbai home_Case_More" href="https://51qqt.com/cooperation.html">成为合作伙伴</a></div>
+					</div>
+				</div>
+			</div>
+
+			<div v-if="suppliernumData[4]" class="cooperation_why">
+				<div class="maxwidth">
+					<div class="PingFangSCMedium tac home_product_title">为什么选择与企企通合作</div>
+					<div class="flex-column">
+						<div v-if="suppliernumData[4]" class="cooperation_why_left" :style="{backgroundImage: 'url('+suppliernumData[4].image+')',backgroundRepeat: 'no-repeat', backgroundPosition: 'center center',backgroundSize: 'cover'}">
+							<div class="cooperation_why_lefttop"><img :src="suppliernumData[4].icon" class="imgsize" alt="品牌实力"></div>
+							<div class="colorbai PingFangSCMedium cooperation_why_leftTitle">{{suppliernumData[4].title}}</div>
+							<div class="f16 cooperation_why_leftText" v-html="suppliernumData[4].intro"></div>
+						</div>
+						<div class="cooperation_why_right flex-column">
+							<div v-if="index<4" :class="'cooperation_why_rightList '+(' cooperation_why_rightList'+index)" v-for="(item,index) in suppliernumData">
+								<div class="cooperation_why_rightImg"><img :src="item.icon" class="imgsize" :alt="item.title"></div>
+								<div class="PingFangSCMedium cooperation_why_rightTitle tac">{{item.title}}</div>
+								<div class="f16  cooperation_why_rightText" v-html="item.intro"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="wow animate__fadeInUp" data-wow-duration="1s">
+				<div v-if="bottomBanner" class="home_register colorbai" :style="{backgroundImage: 'url('+bottomBanner[0].image+')'}">
+					<div v-if="bottomBanner[0].showButton" class="maxwidth flex-column flex-between flex-middle">
+						<div class="PingFangSCMedium">
+							<div v-if="bottomBanner[0].title" class="home_register_text" v-html="bottomBanner[0].title"></div>
+							<div v-if="bottomBanner[0].intro" class="tar" v-html="bottomBanner[0].intro"></div>
+						</div>
+						<div class="f18 register_bottom home_register_but homeHead_appleStytle colorbai" @click="showregistermodal('',5,'')">
+							{{bottomBanner[0].buttonText}}</div>
+					</div>
+				</div>
+				<div class="bgfooter">
+					<div class="footer maxwidth">
+						<div class="footer_topstyle xian_footer flex-column flex-between">
+							<div class="colorbai footer_leftstyle">
+								<div class="footer_logosize"><img src="https://51qqt.com/img/qqtbot.png" class="imgsize" alt="企企通"></div>
+								<a class="flex-column flex-middle" href="tel:400-835-1881"><span class="f14">服务热线：</span><span class="f18 PingFangSCMedium" v-html="baseInfo.fbk2"></span></a>
+								<div class="footer_textpadd"><span class="f14">市场合作：</span><span class="f18 PingFangSCMedium" v-html="baseInfo.email"></span></div>
+								<div class="flex-column tac f14">
+									<div class="footer_contactimgpadd">
+										<div class="footer_contactimg"><img v-if="baseInfo.publicAccountImage" :src="baseInfo.publicAccountImage" class="imgsize" alt="企企通"></div>
+										<div class="tuomaogz" v-html="baseInfo.publicAccountText"></div>
+									</div>
+									<div>
+										<div class="footer_contactimg"><img v-if="baseInfo.consultationImage" :src="baseInfo.consultationImage" class="imgsize" alt="企企通"></div>
+										<div class="tuomaogz" v-html="baseInfo.consultationText"></div>
+									</div>
+								</div>
+							</div>
+							<div class="f14 flex-column flex-between footer_rightstyle" v-if="buttonNav && buttonNav.length>0">
+								<div>
+									<div class="homeHead_appleStytle colorbai" v-text="buttonNav[0].name"></div>
+									<div class="flex-column footer_linkstyle">
+										<div class="footer_linkmag">
+											<div class="colorbai" v-text="buttonNav[0].childNavs[0].name"></div>
+											<template v-for="(saasItem,index) in buttonNav[0].childNavs[0].childNavs">
+												<a v-if="saasItem.link" :href="saasItem.link">{{saasItem.name}}</a>
+												<a v-else>{{saasItem.name}}</a>
+											</template>
+										</div>
+										<div class="">
+											<div class="colorbai" v-text="buttonNav[0].childNavs[1].name"></div>
+
+											<template v-for="(saasItem,index) in buttonNav[0].childNavs[1].childNavs">
+												<a v-if="saasItem.link" :href="saasItem.link">{{saasItem.name}}</a>
+												<a v-else>{{saasItem.name}}</a>
+											</template>
+										</div>
+									</div>
+								</div>
+								<div>
+									<div class="homeHead_appleStytle colorbai" v-text="buttonNav[1].name"></div>
+									<div class="flex-column footer_linkstyle">
+										<div class="footer_linkmag">
+											<div class="colorbai" v-text="buttonNav[1].childNavs[0].name"></div>
+
+											<template v-for="(solutionItem,index) in buttonNav[1].childNavs[0].childNavs">
+												<a v-if="solutionItem.link" :href="solutionItem.link">{{solutionItem.name}}</a>
+												<a v-else>{{solutionItem.name}}</a>
+											</template>
+										</div>
+										<div class="">
+											<div class="colorbai" v-text="buttonNav[1].childNavs[1].name"></div>
+
+											<template v-for="(solutionItem,index) in buttonNav[1].childNavs[1].childNavs">
+												<a v-if="solutionItem.link" :href="solutionItem.link">{{solutionItem.name}}</a>
+												<a v-else>{{solutionItem.name}}</a>
+											</template>
+										</div>
+									</div>
+								</div>
+								<div>
+									<div class="homeHead_appleStytle colorbai" v-text="buttonNav[2].name"></div>
+									<a class="footer_linkstyle" :href="buttonNav[2].childNavs[0].link" v-text="buttonNav[2].childNavs[0].name">客户案例</a>
+								</div>
+								<div>
+									<div class="homeHead_appleStytle colorbai" v-text="buttonNav[3].name"></div>
+									<div class="flex-column footer_linkstyle">
+										<div class="footer_linkmag">
+											<template v-for="(infoItem,index) in buttonNav[3].childNavs">
+												<a :class="index==0?'footer_firstlinkmag':''" v-if="infoItem.link" :href="infoItem.link">{{infoItem.name}}</a>
+												<a v-else>{{infoItem.name}}</a>
+											</template>
+										</div>
+									</div>
+								</div>
+								<div>
+									<div class="homeHead_appleStytle colorbai" v-text="buttonNav[4].name"></div>
+									<div class="flex-column footer_linkstyle">
+										<div class="footer_linkmag">
+											<template v-for="(aboutItem,index) in buttonNav[4].childNavs">
+												<a :class="index==0?'footer_firstlinkmag':''" v-if="aboutItem.link" :href="aboutItem.link">{{aboutItem.name}}</a>
+												<a v-else>{{aboutItem.name}}</a>
+											</template>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+						</div>
+						<div class="f14 flex-column footer_topstyle footer_aboutstyle">
+							<div class="blogroll">友情链接</div>
+							<a v-for="item in blogrollList" :rel="item.linkRelation" :href="item.link">{{item.title}}</a>
+						</div>
+					</div>
+					<div class="f14 tac footer_bottom flex-column flex-center">
+						<div>版权所有 © 2021 深圳市企企通科技有限公司<a href="https://beian.miit.gov.cn/#/Integrated/index" class="footer_bottom_num" target="_blank">粤ICP备15109055号</a></div>
+						<a href="#" class="footer_bottomtext"> 隐私政策</a>
+						<a href="#">网站声明</a>
+						<a href="https://51qqt.com/sitemap.xml" style="margin-left: 40px;">网站地图</a>
+					</div>
+				</div>
+			</div>
+			<div class="bothei"></div>
+			<div class="bgbai flex-column flex-between PingFangSCMediumBanner homephone_bot">
+				<div class="flex-column f14 homephone_bot_left" @click="showregistermodal('',1,'')">
+					<div class="homephone_bot_img"><img src="https://51qqt.com/img/homePhonebot1.png" class="imgsize"></div>
+					<div>注册体验</div>
+				</div>
+				<a class="flex-column f14 homephone_bot_right" href="tel:400-835-1881">
+					<div class="homephone_bot_img"><img src="https://51qqt.com/img/homePhonebot2.png" class="imgsize"></div>
+					<div>电话咨询</div>
+				</a>
+			</div>
+			
+			<div class="register_modal flex-column flex-middle" v-if="showmodel">
+				<div class="registe_form">
+					<div class="registe_form_cancel" @click="hederegistermodal"><img src="https://51qqt.com/img/home114.png" class="imgsize" alt=""></div>
+					<div class="registe_form_bg"><img src="https://51qqt.com/img/home47.png" class="imgsize" alt=""></div>
+					<div class="registe_form_title homeHead_appleStytle"><span class="colorblue">立即构建</span>企业数字化采购协同平台</div>
+					<div class="f16 flex-column flex-middle registe_form_magbot">
+						<div class="registe_form_text PingFangSCMedium">联系人：</div>
+						<div class="registe_form_input"><input v-model="name" type="text" class="imgsize" placeholder="请输入您的姓名"></div>
+					</div>
+					<div class="f16 flex-column flex-middle registe_form_magbot">
+						<div class="registe_form_text PingFangSCMedium">公司名称：</div>
+						<div class="registe_form_input"><input type="text" v-model="companyName" class="imgsize" placeholder="请输入您的公司名全称"></div>
+					</div>
+					<div class="f16 flex-column flex-middle registe_form_magbot">
+						<div class="registe_form_text PingFangSCMedium">手机号码：</div>
+						<div class="registe_form_input"><input type="number" v-model="telephone" class="imgsize" placeholder="请输入您的手机号码"></div>
+					</div>
+					<div class="f16 flex-column flex-middle registe_form_Vercodemagbot">
+						<div class="registe_form_text PingFangSCMedium">验证码：</div>
+						<div class="registe_form_Vercode"><input type="number" v-model="smsCode" class="imgsize" placeholder="请输入验证码"></div>
+						<div class="registe_form_codebut colorbai" @click="getcode">获取验证码</div>
+					</div>
+					<div class="f16 registe_form_submit PingFangSCMedium colorbai" @click="submitfrom()">立即提交</div>
+				</div>
+			</div>
+			
+			<div class="register_modal flex-column flex-middle" v-if="showVidio">
+				<div class="Vidio_padd_wei flex-column flex-middle flex-center porelative">
+					<div class="videoContainer">
+						<div class="colorbai videoTitleText">{{vidiotitle}}</div>
+						<div class="colorbai videoDescriptionText">{{videoDescription}}</div>
+						<video id="notBanner"
+								controls
+								preload="auto"
+								width="878"
+								height="520"
+								:src="vidiourl"
+								:poster="imageUrl"
+								autoplay
+								style="margin-bottom: 111px;margin-top: 16px;"
+						>
+						</video>
+					</div>
+					<div class="videoListContainer" ref="videoListContainer" @scroll="scollerFunc($event)">
+						<div v-for="(item,index) in videoList" @click="showvidiomodal(item)" class="flex-column flex-center videoListItem">
+							<div class="video_img">
+								<img  width="282" height="158" :src="item.image"/>
+							</div>
+							<div class="videoListTitleText">{{item.title}}</div>
+							<div class="colorbai videoListDescriptionText">{{item.description}}</div>
+						</div>
+					</div>
+					<div class="Vidio_cancel" @click="hidevidiomodal"><img src="https://51qqt.com/img/home165.png" class="imgsize" alt=""></div>
+				</div>
+			</div>
+
+			<div class="rightView" v-if="kefuInfo[1]">
+				<div class="rightView_kf_none">
+					
+				</div>
+				<div class="rightView_trial" @click="showregistermodal('',3,'')">
+					<div class="rightView_trialImg"><img :src="kefuInfo[1][0].image" class="imgsize"></div>
+					<div class="f14 rightView_trialText">{{kefuInfo[1][0].text}}</div>
+				</div>
+				<div class="rightView_trial">
+					<div class="rightView_trialImg"><img :src="kefuInfo[1][1].image" class="imgsize"></div>
+					<div class="f14 rightView_trialText">{{kefuInfo[1][1].text}}</div>
+					<div class="rightView_chatUs">
+						<div class="rightView_chatUsImg"><img :src="kefuInfo[1][2].image" class="imgsize"></div>
+						<div class="f14 tac rightView_chatUsText">{{kefuInfo[1][2].text}}</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
+<script>
+	var vm = new Vue({
+		el:'#app',
+		data(){
+			return {
+				leaveWordType:'',
+				pageNameMap:{
+					"7":"manufacturing.html",
+					"8":"retail.html",
+					"9":"food.html",
+					"10":"finance.html",
+					"11":"pharmacy.html",
+					"12":"energy.html",
+					"13":"construction.html",
+					"14":"service.html",
+					"39":"direct.html",
+					"40":"trading.html",
+					"41":"project.html",
+					"42":"service1.html",
+					"43":"bulkCommodities.html",
+					"44":"officeSupplies.html",
+				},
+				firstdemo:[],
+				pageName: 'manufacturing.html',
+				BanerImg:[],
+				endorsedList:[],
+				productSaasList:[],
+				productPaasList:[],
+				competitiveList:[],
+				adverBotList:[],
+				caseCompanylist:[],
+				endorsedBotList:[],
+				CaseList:[],
+				SolutionList:[],
+				information1:[],
+				information2:[],
+				information3:[],
+				information4:[],
+				partnersImg:'',
+				showmodel:false,
+				changenum:0,
+				changeCaseNum: 0,
+				Solutionindex:0,
+				navstopIndex:1,
+				name:'',
+				companyName:'',
+				telephone:'',
+				smsCode:'',
+				registerModule:'1',
+				bannerInterval:"",
+				blogrollList:[],
+				caseInterval:[],
+				caseTabClass1:"home_Solution_left_sel",
+				caseTabClass2:"home_Solution_right_unSel",
+				showVidio:false,
+				vidiotitle:'',
+				videoDescription:'',
+				vidiourl:'',
+				imageUrl:'',
+				videoCurrentPage:1,
+				videoTotalPage:0,
+				videoList:[],
+				numChange:false,
+				suppliernumData:[],
+				clientWidth:0,
+				startTime: 0,
+				startX: 0,
+				startY: 0,
+				buttonNav:[],
+				baseInfo:{},
+				kefuInfo:{},
+				topNav:[],
+				topNavShow:false,
+				bottomBanner:null,
+			}
+		},
+		watch: {
+			numChange(newVal, oldVal){
+				if (newVal&&newVal!=oldVal){
+					const time=300;
+					this.endorsedList.forEach(sed=>{
+						const title=sed.title;
+						const num=parseInt(title)+"";
+						const intervalTime=time/num
+						sed.remark=0
+						const timeOut=setInterval(()=>{
+							sed.remark=sed.remark+1;
+							if (sed.remark>=num){
+								clearInterval(timeOut);
+							}
+						},intervalTime);
+						sed.tag=title.substring(num.length)
+					})
+				}
+			}
+		},
+		created(){
+			getHost('els')
+			this.getdata()
+			this.getBottomNav()
+			this.clientWidth = document.documentElement.clientWidth
+			new WOW().init();
+		},
+		mounted(){
+			getSeo(1)
+			window.addEventListener('scroll', this.handleScroll)
+		},
+		methods: {
+			changenavicon(e){
+				if(e.currentTarget.style.transform=='translateY(4px) rotate(180deg)'){
+					e.currentTarget.parentElement.nextElementSibling.style.display = 'none'
+					e.currentTarget.parentElement.style.color = '#222222'
+					e.currentTarget.style.transform = "none"
+				}else{
+					e.currentTarget.parentElement.nextElementSibling.style.display = 'block'
+					e.currentTarget.parentElement.style.color = '#005CEF'
+					e.currentTarget.style.transform = "translateY(4px) rotate(180deg)"
+				}
+			},
+			showAiFanFan(){
+				setTimeout(()=>{
+					$("#newBridge").attr("style","display: block !important;z-index: 2 !important")
+					$("#nb_icon_wrap").attr("style","margin-top:-32px !important;margin-right:22px !important;")
+				},1000)
+
+			},
+			getdata(){
+				// console.log('aaaa')
+				that = this
+				var _getData = p => get('/general/websiteGeneral/noToken/queryIndexData', p);
+				_getData({})
+				.then(res => {
+					that.suppliernumData = res.result['首页-选择企企通']
+					that.firstdemo = res.result['首页-第一模块'];
+					that.endorsedList = res.result['首页-行业认可文字'];
+					that.productSaasList = res.result['首页-产品模块'].SaaS云;
+					that.productPaasList = res.result['首页-产品模块'].Paas平台;
+					that.competitiveList = res.result['首页-价值模块'];
+					that.adverBotList = res.result['首页-卡片'];
+					// that.caseCompanylist = res.result['首页-合作伙伴、500强、行业认可'][1];
+					that.endorsedBotList = res.result['首页-合作伙伴、500强、行业认可'][3];
+					that.CaseList = res.result['首页-客户评价'];
+					if(that.CaseList.length>1){
+						this.setCaseInterval();
+					}
+					that.SolutionList = res.result['首页-解决方案'];
+					// console.log(that.SolutionList)
+					// setInterval(()=>{
+					// 	that.Solutionindex++
+					// 	if(that.Solutionindex==that.SolutionList[that.navstopIndex][0].length){
+					// 		that.Solutionindex=0
+					// 	}
+					// },2000)
+					that.SolutionList[1][1].forEach(item=>{
+						if (item.name_dictText==that.SolutionList[1][0][0]){
+							that.pageName=this.pageNameMap[item.name]
+						}
+					})
+
+
+					that.information1 = res.result['首页-精选资讯']['企业资讯'];
+					that.information2 = res.result['首页-精选资讯']['市场活动'];
+					that.information3 = res.result['首页-精选资讯']['干货分享'];
+					that.information4 = res.result['首页-精选资讯']['微视频'];
+					that.partnersImg = res.result['首页-合作伙伴'];
+				})
+				.catch(err => {
+					console.log(err,'_getData获取数据异常');
+				})
+				var _getBanerImg = p => get('/banner/noToken/queryByModule', p);
+				_getBanerImg({module:'1'})
+				.then(res => {
+					that.BanerImg = res.result
+					that.BanerImg.forEach(item=>{
+						item.image=item.image.replace(/\s/g,'%20');
+						if(item.mobileImage){
+							item.mobileImage=item.mobileImage.replace(/\s/g,'%20');
+						}
+					})
+					if(that.BanerImg.length>1){
+						this.setBannerInterval();
+					}
+				})
+				.catch(err => {
+					console.log(err,'_getBanerImg获取数据异常');
+				})
+				// 获取500强图片
+				var _getcaseCompanylist = p => get('/consumer/noToken/queryLogo', p);
+				_getcaseCompanylist({type:'1'})
+				.then(res => {
+					that.caseCompanylist = res.result
+				})
+				.catch(err => {
+					console.log(err,'_getcaseCompanylist获取数据异常');
+				})
+			},
+			getNextNum(){
+
+			},
+			handleScroll(){
+				const target = document.querySelector('.industryRecognition');
+				const clientRect = target.getBoundingClientRect();
+				const innerHeight=window.innerHeight;
+				if (innerHeight>clientRect.top+50){
+					this.numChange=true;
+				}else if (clientRect.top>1000){
+					this.numChange=false;
+				}
+			},
+			showregistermodal(link,leaveWordType,index){
+				if (index.toString()){
+					this.leaveWordType='1-'+leaveWordType+"-"+index;
+				}else {
+					this.leaveWordType='1-'+leaveWordType;
+				}
+
+				if (link){
+					window.open(link)
+				}else {
+					if(this.clientWidth<=582){
+						window.location.href="https://51qqt.com/register.html"
+					}else{
+						this.showmodel = true
+					}
+					
+				}
+			},
+			jumpLink(showButton,link){
+
+				if (showButton=='0'&&link){
+					window.open(link)
+				}
+			},
+			hederegistermodal(){
+				this.showmodel = false
+			},
+			changetab(index){
+				this.changenum = index
+				clearInterval(this.bannerInterval)
+				this.setBannerInterval();
+				$('.homeHead_tabs>div').eq(this.changenum).addClass('homeHead_tab').siblings().removeClass('homeHead_tab')
+				$('.homeHead_adverstyle').animate({'left':-(this.changenum*100)+'%'},0);
+			},
+			preftab (){
+				this.changenum = this.changenum-1
+				if(this.changenum==-1){
+					this.changenum = that.BanerImg.length-1
+				}
+				clearInterval(this.bannerInterval)
+				this.setBannerInterval();
+				$('.homeHead_tabs>div').eq(this.changenum).addClass('homeHead_tab').siblings().removeClass('homeHead_tab')
+				$('.homeHead_adverstyle').animate({'left':-(this.changenum*100)+'%'},0);
+			},
+			nexttab (){
+				this.changenum = this.changenum+1
+				if(this.changenum==that.BanerImg.length){
+					this.changenum = 0
+				}
+				clearInterval(this.bannerInterval)
+				this.setBannerInterval();
+				$('.homeHead_tabs>div').eq(this.changenum).addClass('homeHead_tab').siblings().removeClass('homeHead_tab')
+				$('.homeHead_adverstyle').animate({'left':-(this.changenum*100)+'%'},0);
+			},
+			prefSolution (){
+				this.Solutionindex = this.Solutionindex-1
+				if(this.Solutionindex==-1){
+					this.Solutionindex = this.SolutionList[this.navstopIndex][1].length-1
+				}
+			},
+			nextSolution (){
+				this.Solutionindex = this.Solutionindex+1
+				if(this.Solutionindex==this.SolutionList[this.navstopIndex][1].length){
+					this.Solutionindex = 0
+				}
+			},
+			setBannerInterval(){
+				this.bannerInterval=setInterval(()=>{
+					if(that.changenum>=that.BanerImg.length-1){
+						that.changenum=0
+					}else{
+						that.changenum++;
+					}
+					$('.homeHead_tabs>div').eq(that.changenum).addClass('homeHead_tab').siblings().removeClass('homeHead_tab')
+					$('.homeHead_adverstyle').animate({'left':-(that.changenum*100)+'%'},0);
+					this.videoPauseOrPlay()
+				},4000);
+			},
+			videoPauseOrPlay(){
+				var videos=document.getElementsByTagName('video');
+				if(videos.length!=0){
+					for (var i=0;i<videos.length;i++){
+						var id=$(videos[i]).prop("id");
+						if (id!="notBanner"){
+							videos[i].pause()
+						}
+					}
+				}
+			},
+			changeCaseTab(index){
+				this.changeCaseNum = index
+				clearInterval(this.caseInterval)
+				this.setCaseInterval();
+				$('.home_Case_tabs>div').eq(this.changeCaseNum).addClass('home_Case_tab').siblings().removeClass('home_Case_tab')
+				$('.home_Case_info').eq(this.changeCaseNum).addClass('home_Case_info_show').siblings().removeClass('home_Case_info_show')
+			},
+			prefCaseTab(){
+				this.changeCaseNum = this.changeCaseNum-1
+				if(this.changeCaseNum==-1){
+					this.changeCaseNum = this.CaseList.length-1
+				}
+				clearInterval(this.caseInterval)
+				this.setCaseInterval();
+				$('.home_Case_tabs>div').eq(this.changeCaseNum).addClass('home_Case_tab').siblings().removeClass('home_Case_tab')
+				$('.home_Case_info').eq(this.changeCaseNum).addClass('home_Case_info_show').siblings().removeClass('home_Case_info_show')
+			},
+			nextCaseTab(){
+				this.changeCaseNum = this.changeCaseNum+1
+				if(this.changeCaseNum==this.CaseList.length){
+					this.changeCaseNum = 0
+				}
+				clearInterval(this.caseInterval)
+				this.setCaseInterval();
+				$('.home_Case_tabs>div').eq(this.changeCaseNum).addClass('home_Case_tab').siblings().removeClass('home_Case_tab')
+				$('.home_Case_info').eq(this.changeCaseNum).addClass('home_Case_info_show').siblings().removeClass('home_Case_info_show')
+			},
+			changenavstop(index,item){
+				item[1].forEach(i=>{
+					if (item[0][0]==i.name_dictText){
+						this.pageName=this.pageNameMap[i.name]
+					}
+				})
+
+				// console.log(index)
+				if (index==1){
+					this.caseTabClass1="home_Solution_left_sel"
+					this.caseTabClass2="home_Solution_right_unSel"
+				}else {
+					this.caseTabClass1="home_Solution_left_unSel"
+					this.caseTabClass2="home_Solution_right_sel"
+				}
+				this.navstopIndex = index
+				this.Solutionindex = 0
+
+			},
+			changeSolution(index,item,name){
+				item.forEach(i=>{
+					if (i.name_dictText==name){
+						this.pageName=this.pageNameMap[i.name]
+					}
+				})
+				this.Solutionindex = index
+				$('.home_Solutionleft>div').eq(this.Solutionindex).addClass('bgblue').siblings().removeClass('bgblue')
+				// $('.home_Solution_item .home_Solution_rightwidth').eq(index).css("display","flex").siblings().css("display","none");
+			},
+			getcode(){
+				const reg = /^((0\d{2,3}-\d{7,8})|(1[3456789]\d{9}))$/
+				if(!reg.test(this.telephone)){
+					window.alert("请输入正确的电话号码！");
+					return false
+				}
+				var _getcode = p => post('/account/sms', p,'json');
+				_getcode({
+					mobile:this.telephone,
+					smsmode:"1"
+				})
+				.then(res => {
+					window.alert(res.message);
+				})
+				.catch(err => {
+					console.log(err,'_getcode获取数据异常');
+				})
+			},
+			getBottomNav(){
+				var _getBottomNav = p => get('/websiteNav/noToken/queryByType', p);
+				_getBottomNav({
+					type:2,
+				})
+						.then(res => {
+							console.log(res)
+							if (res.code==200){
+								this.buttonNav=res.result;
+							}
+
+						})
+						.catch(err => {
+							console.log(err,'_getBottomNav获取数据异常');
+						})
+			},
+			submitfrom(){
+				if(this.name==''){
+					window.alert("联系人不能为空！");
+					return false
+				}
+				if(this.companyName==''){
+					window.alert("公司名称不能为空！");
+					return false
+				}
+				const reg = /^((0\d{2,3}-\d{7,8})|(1[3456789]\d{9}))$/
+				if(!reg.test(this.telephone)){
+					window.alert("请输入正确的电话号码！");
+					return false
+				}
+				if(this.smsCode==''){
+					window.alert("验证码不能为空！");
+					return false
+				}
+				var _getcode = p => post('/website/websiteUserInfo/noToken/add', p,'json');
+				_getcode({
+					name:this.name,
+					companyName:this.companyName,
+					telephone:this.telephone,
+					smsCode:this.smsCode,
+					registerModule: this.leaveWordType,
+				})
+				.then(res => {
+					if (res.code==200){
+						window.alert('提交成功！');
+						this.showmodel = false
+					}else if (res.code==1000){
+						window.alert('已提交信息，无需重复提交！');
+					}else {
+						window.alert('验证码错误！');
+					}
+				})
+				.catch(err => {
+					console.log(err,'_getcode获取数据异常');
+				})
+			},
+			setCaseInterval(){
+				this.caseInterval=setInterval(()=>{
+					if(that.changeCaseNum>=that.CaseList.length-1){
+						that.changeCaseNum=0
+					}else{
+						that.changeCaseNum++;
+					}
+					$('.home_Case_tabs>div').eq(this.changeCaseNum).addClass('home_Case_tab').siblings().removeClass('home_Case_tab')
+					$('.home_Case_info').eq(this.changeCaseNum).addClass('home_Case_info_show').siblings().removeClass('home_Case_info_show')
+				},4000);
+			},
+			turnInformationDetail(item){
+				if (item.type==4){
+					this.showvidiomodal(item)
+				}else {
+					window.location.href="newsInfo.html?id="+item.id
+				}
+			},
+			scollerFunc(el) {
+				let dom = el.target;
+				const scrollDistance = dom.scrollHeight - dom.scrollTop - dom.clientHeight;
+				if (scrollDistance <= 1) {//等于0证明已经到底，可以请求接口
+					console.log("触底了")
+					if (this.videoCurrentPage<this.videoTotalPage){
+						this.videoCurrentPage=this.videoCurrentPage+1
+						this.getVideoData()
+					}else {
+						// alert("没有更多数据了")
+					}
+				}
+			},
+			showvidiomodal(item){
+				this.videoDescription=item.description
+				this.vidiotitle = item.title
+				this.vidiourl = item.video
+				this.imageUrl=item.image
+				this.showVidio = true
+				this.videoList=[]
+				var _viewsCount = p => get('/information/noToken/viewsCount', p);
+				_viewsCount({
+					id:item.id
+				}).then(res => {
+					console.log("数据统计返回数据：",res)
+				}).catch(err => {
+					console.log(err,'_viewsCount获取数据异常');
+				})
+				this.getVideoData()
+			},
+			hidevidiomodal(){
+				this.showVidio = false
+			},
+			getVideoData(){
+				that = this
+				var _getVideoData = p => get('/information/noToken/frontList', p);
+				_getVideoData({
+					type:4,
+					pageNo:this.videoCurrentPage,
+					pageSize:50
+				}).then(res => {
+					res.result.records.forEach(item=>{
+						that.videoList.push(item)
+					})
+					console.log(that.videoList)
+					that.videoTotalPage=res.result.pages
+				}).catch(err => {
+					console.log(err,'_getVideoData获取数据异常');
+				})
+			},
+			handelTouchStart(e){
+				// console.log('按钮', e.changedTouches[0].clientX);
+				this.startTime = Date.now()
+				this.startX = e.changedTouches[0].clientX;
+				this.startY = e.changedTouches[0].clientY;
+			},
+			handelTouchend(e) {
+				// console.log('按钮', e.changedTouches[0].clientX);
+				if(this.clientWidth>=582){
+					return
+				}
+				let endTime = Date.now()
+				let endX = e.changedTouches[0].clientX;
+				let endY = e.changedTouches[0].clientY;
+				if (endTime - this.startTime > 2000) { //正常操作不会大于2秒
+					return
+				}
+				let direction = '';
+				//如果Y轴移动小于10,证明是上下滑动,所以不做处理
+				if (Math.abs(endX - this.startX) > 10 && Math.abs(endY - this.startY) < 100) {
+					direction = endX - this.startX > 0 ? 'right' : 'left'
+				}else{
+					return
+				}
+				if(direction=='right'){
+					if(this.Solutionindex!=0){
+						this.Solutionindex--
+					}
+				}else{
+					// console.log(this.SolutionList[this.navstopIndex])
+					if(this.SolutionList[this.navstopIndex][1].length-1>this.Solutionindex){
+						this.Solutionindex++
+					}
+				}
+				// console.log(direction);
+			},
+			bannerTouchend(e) {
+				if(this.clientWidth>=582){
+					return
+				}
+				let endTime = Date.now()
+				let endX = e.changedTouches[0].clientX;
+				let endY = e.changedTouches[0].clientY;
+				if (endTime - this.startTime > 2000) { //正常操作不会大于2秒
+					return
+				}
+				let direction = '';
+				console.log(this.startX,endX,this.startY,endY)
+				//如果Y轴移动小于10,证明是上下滑动,所以不做处理
+				if (Math.abs(endX - this.startX) > 10 && Math.abs(endY - this.startY) < 100) {
+					direction = endX - this.startX > 0 ? 'right' : 'left'
+				}else{
+					return
+				}
+				console.log(direction)
+				if(direction=='right'){
+					if(this.changenum==0){
+						return
+					}
+					this.changenum --
+				}else{
+					// console.log(this.SolutionList[this.navstopIndex])
+					if(this.BanerImg.length-1>this.changenum){
+						this.changenum++
+					}
+				}
+				clearInterval(this.bannerInterval)
+				this.setBannerInterval();
+				$('.homeHead_tabs>div').eq(this.changenum).addClass('homeHead_tab').siblings().removeClass('homeHead_tab')
+				$('.homeHead_adverstyle').animate({'left':-(this.changenum*100)+'%'},0);
+			},
+			CaseTouchend(e) {
+				if(this.clientWidth>=582){
+					return
+				}
+				let endTime = Date.now()
+				let endX = e.changedTouches[0].clientX;
+				let endY = e.changedTouches[0].clientY;
+				if (endTime - this.startTime > 2000) { //正常操作不会大于2秒
+					return
+				}
+				let direction = '';
+				//如果Y轴移动小于10,证明是上下滑动,所以不做处理
+				if (Math.abs(endX - this.startX) > 10 && Math.abs(endY - this.startY) < 100) {
+					direction = endX - this.startX > 0 ? 'right' : 'left'
+				}else{
+					return
+				}
+				if(direction=='right'){
+					if(this.changeCaseNum==0){
+						return
+					}
+					this.changeCaseNum --
+				}else{
+					if(this.CaseList.length-1>this.changeCaseNum){
+						this.changeCaseNum++
+					}
+				}
+				clearInterval(this.caseInterval)
+				this.setCaseInterval();
+				$('.home_Case_tabs>div').eq(this.changeCaseNum).addClass('home_Case_tab').siblings().removeClass('home_Case_tab')
+				$('.home_Case_info').eq(this.changeCaseNum).addClass('home_Case_info_show').siblings().removeClass('home_Case_info_show')
+			},
+			trunPaasPage(href){
+				window.location.href=href
+			}
+		},
+		computed:{
+			imgwidth(){
+				if(!this.BanerImg.length){
+					return '600%'
+				}
+				return (this.BanerImg.length * 100) +'%'
+			},
+			getbaseUrl(url, base) {
+				if (!base) {
+					base = location.protocol + location.host;
+				}
+				return new URL(url, base).href;
+			}
+		},
+	})
+</script>
+<script src="https://51qqt.com/js/navigation.js"></script>

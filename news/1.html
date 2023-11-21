@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,initial-scale=1,user-scalable=no" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+		<title>企企通</title>
+		<link rel="shortcut icon" href="https://51qqt.com/img/qqtlogo.ico" />
+		<meta  name="Keywords" content="">
+		<meta  name="Description" content="">
+		<link rel="stylesheet" href="https://51qqt.com/css/flex-layout.css" />
+		<link rel="stylesheet" href="https://51qqt.com/css/reset.css" />
+		<!-- 头部底部样式 -->
+		<link rel="stylesheet" href="https://51qqt.com/css/index.css" />
+		<!-- 首页样式 -->
+		<link rel="stylesheet" href="https://51qqt.com/css/homestyle.css" />
+        <!-- 荣耀资质样式 -->
+        <link rel="stylesheet" href="https://51qqt.com/css/caseStudy.css">
+		<link rel="stylesheet" href="https://51qqt.com/css/animate.min.css" />
+		<script src="https://51qqt.com/js/jquery.min.js"></script>
+		<script src="https://51qqt.com/js/load.js"></script>
+		<script type="text/javascript">
+			load('axios')
+		</script>
+	</head>
+	<body>
+		<div id="app" v-cloak>
+			<div class="header headershow">
+				<div class="flex-column flex-between homeHead f16 maxwidth">
+					<div class="flex-column flex-middle">
+						<a class="logosize" href="https://51qqt.com/index.html"><img src="https://51qqt.com/img/logo.png" class="imgsize" alt="企企通"></a>
+						<div class="flex-column flex-middle homenavs">
+							<ul class="flex-column flex-middle homeNav" v-if="topNavShow">
+								<li class="hobverPopUp">
+									<div class="hobverPopUp_text"><span>{{topNav[0].name}}</span><span class="iconxia"></span></div>
+									<div class="homeHead_popUpStyle bghead">
+										<div class="maxwidth">
+											<div class="flex-column xian_headsolid">
+												<div class="homeHead_productpopUp_saas">
+													<div class="f18 homeHead_appleStytle homeHead_productpopUp_left">{{topNav[0].childNavs[0].name}}</div>
+												</div>
+												<div class="homeHead_productpopUp_right f14 flex-column flex-between">
+													<div class="homeHead_productpopUp_rightText">
+														<div style="position: absolute"><img :src="topNav[0].childNavs[0].childNavs[0].icon" class="saasNavItemIcon"></div>
+														<div class="homeHead_productpopUp_title homeHead_appleStytle"><a :href="topNav[0].childNavs[0].childNavs[0].link">{{topNav[0].childNavs[0].childNavs[0].name}}</a><span class="iconright"></span></div>
+														<div class="f12 homeHead_productpopUp_subheading" v-html="topNav[0].childNavs[0].childNavs[0].description"></div>
+														<a v-for="(navItem,index) in topNav[0].childNavs[0].childNavs[0].childNavs" :href="navItem.link">{{navItem.name}}</a>
+													</div>
+													<div class="homeHead_productpopUp_rightText">
+														<div style="position: absolute"><img :src="topNav[0].childNavs[0].childNavs[1].icon" class="saasNavItemIcon"></div>
+														<div class="homeHead_productpopUp_title homeHead_appleStytle"><a :href="topNav[0].childNavs[0].childNavs[1].link">{{topNav[0].childNavs[0].childNavs[1].name}}</a><span class="iconright"></span></div>
+														<div class="f12 homeHead_productpopUp_subheading" v-html="topNav[0].childNavs[0].childNavs[1].description"></div>
+														<a v-for="(navItem,index) in topNav[0].childNavs[0].childNavs[1].childNavs" :href="navItem.link">{{navItem.name}}</a>
+													</div>
+													<div>
+														<a class="homeHead_productpopUp_rightText" :href="topNav[0].childNavs[0].childNavs[2].link">
+															<div style="position: absolute"><img :src="topNav[0].childNavs[0].childNavs[2].icon" class="saasNavItemIcon"></div>
+															<div class="homeHead_productpopUp_title homeHead_appleStytle">{{topNav[0].childNavs[0].childNavs[2].name}}<span class="iconright colorblue"></span></div>
+															<div class="f12 homeHead_productpopUp_subheading" v-html="topNav[0].childNavs[0].childNavs[2].description"></div>
+														</a>
+														<div class="homeHead_productpopUp_rightText">
+															<div style="position: absolute"><img :src="topNav[0].childNavs[0].childNavs[3].icon" class="saasNavItemIcon"></div>
+															<div class="homeHead_productpopUp_title homeHead_appleStytle"><a :href="topNav[0].childNavs[0].childNavs[3].link">{{topNav[0].childNavs[0].childNavs[3].name}}</a><span class="iconright"></span></div>
+															<div class="f12 homeHead_productpopUp_subheading" v-html="topNav[0].childNavs[0].childNavs[3].description"></div>
+														</div>
+														<div class="homeHead_productpopUp_rightText">
+															<div style="position: absolute"><img :src="topNav[0].childNavs[0].childNavs[4].icon" class="saasNavItemIcon"></div>
+															<div class="homeHead_productpopUp_title homeHead_appleStytle"><a :href="topNav[0].childNavs[0].childNavs[4].link">{{topNav[0].childNavs[0].childNavs[4].name}}</a><span class="iconright"></span></div>
+															<div class="f12 homeHead_productpopUp_subheading" v-html="topNav[0].childNavs[0].childNavs[4].description"></div>
+														</div>
+
+													</div>
+												</div>
+											</div>
+											<div class="flex-column">
+												<div class="homeHead_productpopUp_saas">
+													<div class="f18 homeHead_appleStytle homeHead_productpopUp_paas_left">{{topNav[0].childNavs[1].name}}</div>
+												</div>
+												<div class="flex-column flex-between homeHead_productpopUp_paas_right">
+													<a v-for="(passNavItem,index) in topNav[0].childNavs[1].childNavs" :href="passNavItem.link">
+														<div style="position: relative"><img style="width: 44px;height: 44px;position: absolute;top: -29px;left: 200px;" :style="index==0?'top:-27px':''" :src="passNavItem.icon"></div>
+														<div class="f14 homeHead_appleStytle">{{passNavItem.name}}</div>
+														<div class="f12 homeHead_productpopUp_paas_right_subheading" v-html="passNavItem.description"></div>
+													</a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li class='hobverPopUp'>
+									<span class="hobverPopUp_text">{{topNav[1].name}}</span><span class="iconxia"></span>
+									<div class="bghead homeHead_popUpStyle">
+										<div class=" maxwidth">
+											<div v-for="(solutionNavItem,index) in topNav[1].childNavs" class="flex-column xian_headsolid">
+												<div class="homeHead_solutionPopUp_left">
+													<div class="f18 homeHead_appleStytle homeHead_solutionPopUp_leftTitle">
+														{{solutionNavItem.name}}</div>
+												</div>
+												<div class="homeHead_productpopUp_right f14 flex-column">
+													<a v-for="(solutionNavItemChild,index) in solutionNavItem.childNavs" class="homeHead_solutionPopUp_rightText" :href="solutionNavItemChild.link">
+														<div style="position: absolute">
+															<img :src="solutionNavItemChild.icon" class="navIcon">
+														</div>
+														<div class="f14 homeHead_productpopUp_title homeHead_appleStytle">{{solutionNavItemChild.name}}</div>
+														<div class="f12 homeHead_solutionPopUp_subheading" v-html="solutionNavItemChild.description"></div>
+													</a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li class='aHover'><a :href="topNav[2].link">{{topNav[2].name}}</a></li>
+								<li class="hobverPopUp">
+									<span class="hobverPopUp_text"><a :href="topNav[3].link">{{topNav[3].name}}</a></span><span class="iconxia"></span>
+									<div class="bghead  homeHead_popUpStyle">
+										<div class="maxwidth">
+											<div class="flex-column">
+												<div class="homeHead_informationPopUp_left">
+													<div class="f18 homeHead_informationPopUp_Title" :style="{backgroundImage: 'url('+topNav[3].childNavs[0].backgroundImage+')',backgroundRepeat: 'no-repeat', backgroundSize: '100% 100%'}">
+														<div class="homeHead_appleStytle homeHead_informationPopUp_leftTitle">{{topNav[3].childNavs[0].name}}</div>
+														<div class="f12 homeHead_solutionPopUp_subheading" v-html="topNav[3].childNavs[0].description"></div>
+														<a class="f14 homeHead_registertil homeHead_playvidio colorbai" :href="topNav[3].childNavs[0].link">立即观看</a>
+													</div>
+												</div>
+												<div class="homeHead_informationPopUp_right f14 flex-column">
+													<a v-if="index!=0" v-for="(newsNavItem,index) in topNav[3].childNavs" class="homeHead_informationPopUp_rightText" :href="newsNavItem.link">
+														<div style="position: absolute">
+															<img :src="newsNavItem.icon" class="navIcon">
+														</div>
+														<div class="f14 homeHead_productpopUp_title homeHead_appleStytle">{{newsNavItem.name}}<span class="iconrightgary"></span></div>
+														<div class="f12 homeHead_solutionPopUp_subheading" v-html="newsNavItem.description"></div>
+													</a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li class="aHover"><a :href="topNav[4].link">{{topNav[4].name}}</a></li>
+								<li class="hobverPopUp">
+									<span class="hobverPopUp_text">{{topNav[5].name}}</span><span class="iconxia"></span>
+									<div class="bghead homeHead_popUpStyle">
+										<div class="maxwidth">
+											<div class="flex-column flex-between flex-middle homeHead_aboutUsPopUp_padd">
+												<a v-for="(aboutNavItem,index) in topNav[5].childNavs" class="homeHead_aboutUsPopUp_Text" :href="aboutNavItem.link">
+													<div style="position: absolute">
+														<img :src="aboutNavItem.icon" class="aboutNavIcon">
+													</div>
+													<div class="f14 homeHead_aboutUsPopUp_title homeHead_appleStytle">{{aboutNavItem.name}}<span class="iconrightgary"></span></div>
+													<div class="f12 homeHead_solutionPopUp_subheading" v-html="aboutNavItem.description"></div>
+												</a>
+											</div>
+										</div>
+									</div>
+
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="flex-column flex-middle flex-right">
+						<a class="flex-column flex-middle" href="tel:400-835-1881">
+							<div class="iconsize"><img src="https://51qqt.com/img/home18.png" class="imgsize" alt="电话拨号"></div>
+							<div class="homeHead_phone homeHead_appleStytle f18">400-835-1881</div>
+						</a>
+						<a class="f16 homeHead_logintil" :href="baseInfo.fbk1">登录</a>
+						<div class="f14 homeHead_registertil" @click="showregistermodal(1)">注册体验</div>
+					</div>
+				</div>
+				<div class="bgbai homephoneHead_height">
+					<div class="flex-column flex-between homephoneHead xian_head">
+						<a class="logosize" href="https://51qqt.com/index.html"><img src="https://51qqt.com/img/logo.png" class="imgsize" alt="企企通"></a>
+						<div class="flex-column flex-middle">
+							<a href="tel:400-835-1881" class="flex-column flex-middle">
+								<div class="iconsize"><img src="https://51qqt.com/img/home18.png" class="imgsize" alt="电话拨号"></div>
+								<div class="homeHead_phone homeHead_appleStytle f18">400-835-1881</div>
+							</a>
+							<div class="menu_buttonstyle">
+								<div class="menu_button">
+									<div class="bar"></div>
+									<div class="bar"></div>
+									<div class="bar"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="shownavs">
+						<div class="flex-column" style="height: 100%;">
+							<div class="f14 PingFangSCMediumBanner homephoneHead_left" v-if="topNavShow">
+								<a class="homephoneHead_leftList">{{topNav[0].name}}</a>
+								<a>{{topNav[1].name}}</a>
+								<a class="homephoneHead_left_link" href="https://51qqt.com/case-study.html">{{topNav[2].name}}</a>
+								<a>{{topNav[3].name}}</a>
+								<a class="homephoneHead_left_link" href="https://51qqt.com/cooperation.html">{{topNav[4].name}}</a>
+								<a>{{topNav[5].name}}</a>
+							</div>
+							<div class="homephoneHead_right f14">
+								<template v-if="topNavShow">
+									<div class="f14 PingFangSCMediumBanner homephoneHead_right_title">{{topNav[0].childNavs[0].name}}</div>
+									<div v-for="(saasNav,index) in topNav[0].childNavs[0].childNavs">
+										<div class="flex-column flex-between homephoneHead_navchild_Subhead">
+											<div style="position: absolute">
+												<img :src="saasNav.icon" style="width: 30px;height: 30px;position: absolute;top: -8px;left: -38px;">
+											</div>
+											<div>
+												<a :href="saasNav.link">{{saasNav.name}}</a>
+											</div>
+											<div v-if="index<2" class="homephoneHead_navicon" @click="changenavicon"><img src="https://51qqt.com/img/homephone_xia.png" class="imgsize" alt="企企通图标"></div>
+										</div>
+										<div class="shownavchild_text" v-if="index<2">
+											<a v-for="(saasNavItem,index) in saasNav.childNavs" class="homephoneHead_navchild_text" :href="saasNavItem.link">{{saasNavItem.name}}</a>
+										</div>
+									</div>
+								</template>
+
+
+								<div class="f14 PingFangSCMediumBanner homephoneHead_right_title"  v-if="topNavShow">
+									{{topNav[0].childNavs[1].name}}
+								</div>
+								<template v-if="topNavShow">
+									<div v-for="(paasNav,index) in topNav[0].childNavs[1].childNavs">
+										<div style="position: absolute">
+											<img :src="paasNav.icon" style="width: 30px;height: 30px;position: absolute;top: -8px;"/>
+										</div>
+										<a class="homephoneHead_navchild_text" :href="paasNav.link">{{paasNav.name}}</a>
+									</div>
+								</template>
+							</div>
+							<div class="homephoneHead_right f14">
+								<template v-if="topNavShow">
+									<template  v-for="(solutionNav,index) in topNav[1].childNavs">
+										<div class="f14 PingFangSCMediumBanner homephoneHead_right_title">{{solutionNav.name}}</div>
+										<div>
+											<a v-for="(solutionNavItem,index) in solutionNav.childNavs" :class="solutionNavItem.link?'homephoneHead_right_text':'homephoneHead_right_text cursorDefault'" :href="solutionNavItem.link">{{solutionNavItem.name}}</a>
+										</div>
+									</template>
+								</template>
+							</div>
+							<div class="homephoneHead_right f14">
+								<template v-if="topNavShow">
+									<div class="f14 PingFangSCMediumBanner homephoneHead_right_title">资讯中心</div>
+									<div>
+										<a v-if="index!=0" v-for="(newsNav,index) in topNav[3].childNavs" class="homephoneHead_right_text" :href="newsNav.link">{{newsNav.name}}</a>
+										<a class="homephoneHead_right_text" :href="topNav[3].childNavs[0].link">微视频</a>
+									</div>
+								</template>
+							</div>
+							<div class="homephoneHead_right f14">
+								<template v-if="topNavShow">
+									<div class="f14 PingFangSCMediumBanner homephoneHead_right_title">关于我们</div>
+									<div>
+										<a v-for="(aboutNav,index) in topNav[5].childNavs" class="homephoneHead_right_text" :href="aboutNav.link">{{aboutNav.name}}</a>
+									</div>
+								</template>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="FilterList_id" class="heiheader headershow"></div>
+			<div class="caseStudyInfo_bg " v-if="InfoData.length">
+				<div class="phone_navs_relative">
+					<div class="flex-column f16 flex-middle bgbai news_navs maxwidth">
+						<div v-for="item in industryList" :class="typeIndex==item.type?'news_navschenck':''" @click="changetype(item.type)" >{{item.name}}</div>
+					</div>
+				</div>
+				<div class="flex-column flex-top maxwidth" v-if="typeIndex!='videos.html'">
+					<div class="news_left">
+						<div class="flex-column flex-top news_list" v-for="item in InfoData"  v-if="InfoData.length!=0">
+                            <div class="news_listimg" @click="tznewsInfo(item)">
+								<div v-if="item.top==1" class="informationTop">
+									置顶
+								</div>
+								<img :src="item.image" class="imgsize" :alt="item.title">
+							</div>
+                            <div class="news_listright">
+                                <div class="f18 homeHead_appleStytle news_listright_title" @click="tznewsInfo(item)">{{item.title}}</div>
+                                <div class="f14 news_listright_text">{{item.description}}</div>
+                                <div class="f14 flex-column flex-middle flex-between">
+                                    <div class="news_listright_but" v-if="item.tag">{{item.tag}}</div>
+                                    <div class="colorhui888">{{item.publishTime}}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tac f26"  v-if="InfoData.length==0">
+                            暂无数据
+                        </div>
+                        <div class="caseStudy_FilterPages flex-column flex-middle flex-center" v-if="InfoData.length>0">
+                            <a href="#FilterList_id" class="Pagesprev" v-if="totalPage>5&&currentPage!=1"><img src="https://51qqt.com/images/caseStudy/caseStudy4.png" class="imgsize" alt="上一页" @click="prevPage"></a>
+                            <a href="#FilterList_id" class="f16 flex-column flex-middle caseStudy_FilterPages_nums tac">
+                                <div v-if="showPage(item)" v-for="item in Pagenun" :class="currentPage==item?'caseStudy_FilterPages_num':''" @click="changePage(item)">{{item}}</div>
+							</a>
+                            <a href="#FilterList_id" class="Pagesnext" v-if="totalPage>5&&currentPage!=totalPage"><img src="https://51qqt.com/images/caseStudy/caseStudy3.png" class="imgsize" alt="下一页" @click="nextPage"></a>
+                        </div>
+					</div>
+					<div class="caseStudyInfo_right">
+						<div class="caseStudyInfo_right_img"><img :src="baseInfo.informationImage" class="imgsize" alt="获取更多采购干货分享"></div>
+						<div class="caseStudyInfo_rightBot">
+							<div class="homeHead_appleStytle caseStudyInfo_rightBot_title"><span>热门资讯</span></div>
+							<div class="flex-column">
+								<div class="caseStudyInfo_rightBot_icon tac">
+									<div class="caseStudyInfo_rightBot_iconImg"><img src="https://51qqt.com/images/caseStudy/caseStudy7.png" class="imgsize" alt="第一"></div>
+									<div class="caseStudyInfo_rightBot_iconImg"><img src="https://51qqt.com/images/caseStudy/caseStudy8.png" class="imgsize" alt="第二"></div>
+									<div class="caseStudyInfo_rightBot_iconImg"><img src="https://51qqt.com/images/caseStudy/caseStudy9.png" class="imgsize" alt="第三"></div>
+									<div class="caseStudyInfo_rightBot_iconImg" v-if="hotList.length>3">4</div>
+									<div class="caseStudyInfo_rightBot_iconImg" v-if="hotList.length>4">5</div>
+									<div class="caseStudyInfo_rightBot_iconImg" v-if="hotList.length>5">6</div>
+									<div class="caseStudyInfo_rightBot_iconImg" v-if="hotList.length>6">7</div>
+									<div class="caseStudyInfo_rightBot_iconImg" v-if="hotList.length>7">8</div>
+									<div class="caseStudyInfo_rightBot_iconImg" v-if="hotList.length>8">9</div>
+									<div class="caseStudyInfo_rightBot_iconImg" v-if="hotList.length>9">10</div>
+								</div>
+								<div class="f16 caseStudyInfo_rightBot_text">
+									<div v-for="(item,index) in hotList" style="position: relative;">
+										<a v-if="item.type!=4" @mouseover="overFun(index)" @mouseout="outFun(index)" style="z-index: -100" :href="'https://51qqt.com/newsInfo.html?id='+item.id">{{item.title}}</a>
+										<a v-else @mouseover="overFun(index)" @mouseout="outFun(index)" style="z-index: -100" @click="showvidiomodal(item)" >{{item.title}}</a>
+										<div :class="showFullTitle==index?'hot_title_show_before':''"></div>
+										<div :class="showFullTitle==index?'hot_title_show_after':''"></div>
+										<div :class="showFullTitle==index?'hot_title_show':'hot_title_show_hidden'">
+											{{item.title}}
+										</div>
+									</div>
+
+								</div>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+                <div class="flex-column flex-top flex-between maxwidth" v-else>
+                    <div v-for="item in InfoData" class="news_vidio_list bgbai" @click="showvidiomodal(item)" >
+                        <div class="news_vidio_img porelative">
+							<img :src="item.image" class="imgsize notPlayImage" :alt="item.title">
+							<img class="about_video_imgplay" src="https://51qqt.com/images/about/about7.png" class="imgsize" alt="">
+						</div>
+                        <div class="news_vidio_pad">
+                            <div class="f20 news_vidio_title PingFangSCMedium" v-html="item.title"></div>
+                            <div class="f14 news_vidio_text" v-html="item.description"></div>
+                        </div>
+                    </div>
+
+
+					<div class="tac f26 videoPageWidth"  v-if="InfoData.length==0" style="width: 100%">
+						暂无数据
+					</div>
+					<div class="caseStudy_FilterPages flex-column flex-middle flex-center videoPageWidth" v-if="InfoData.length>0">
+						<div class="Pagesprev" v-if="totalPage>5&&currentPage!=1"><img src="https://51qqt.com/images/caseStudy/caseStudy4.png" class="imgsize" alt="上一页" @click="prevPage"></div>
+						<div class="f16 flex-column flex-middle caseStudy_FilterPages_nums tac">
+							<div v-if="showPage(item)" v-for="item in Pagenun" :class="currentPage==item?'caseStudy_FilterPages_num':''" @click="changePage(item)">{{item}}</div>
+						</div>
+						<div class="Pagesnext" v-if="totalPage>5&&currentPage!=totalPage"><img src="https://51qqt.com/images/caseStudy/caseStudy3.png" class="imgsize" alt="下一页" @click="nextPage"></div>
+					</div>
+                </div>
+			</div>
+			<div class="wow animate__fadeInUp" data-wow-duration="1s">
+				<div v-if="bottomBanner" class="home_register colorbai" :style="{backgroundImage: 'url('+bottomBanner[0].image+')'}">
+					<div v-if="bottomBanner[0].showButton" class="maxwidth flex-column flex-between flex-middle">
+						<div class="PingFangSCMedium">
+							<div v-if="bottomBanner[0].title" class="home_register_text" v-html="bottomBanner[0].title"></div>
+							<div v-if="bottomBanner[0].intro" class="tar" v-html="bottomBanner[0].intro"></div>
+						</div>
+						<div class="f18 register_bottom home_register_but homeHead_appleStytle colorbai" @click="showregistermodal(3)">
+							{{bottomBanner[0].buttonText}}</div>
+					</div>
+				</div>
+				<div class="bgfooter">
+					<div class="footer maxwidth">
+						<div class="footer_topstyle xian_footer flex-column flex-between">
+							<div class="colorbai footer_leftstyle">
+								<div class="footer_logosize"><img src="https://51qqt.com/img/qqtbot.png" class="imgsize" alt="企企通"></div>
+								<a class="flex-column flex-middle" href="tel:400-835-1881"><span class="f14">服务热线：</span><span class="f18 PingFangSCMedium" v-html="baseInfo.fbk2"></span></a>
+								<div class="footer_textpadd"><span class="f14">市场合作：</span><span class="f18 PingFangSCMedium" v-html="baseInfo.email"></span></div>
+								<div class="flex-column tac f14">
+									<div class="footer_contactimgpadd">
+										<div class="footer_contactimg"><img v-if="baseInfo.publicAccountImage" :src="baseInfo.publicAccountImage" class="imgsize" alt="企企通"></div>
+										<div class="tuomaogz" v-html="baseInfo.publicAccountText"></div>
+									</div>
+									<div>
+										<div class="footer_contactimg"><img v-if="baseInfo.consultationImage" :src="baseInfo.consultationImage" class="imgsize" alt="企企通"></div>
+										<div class="tuomaogz" v-html="baseInfo.consultationText"></div>
+									</div>
+								</div>
+							</div>
+							<div class="f14 flex-column flex-between footer_rightstyle" v-if="buttonNav && buttonNav.length>0">
+								<div>
+									<div class="homeHead_appleStytle colorbai" v-text="buttonNav[0].name"></div>
+									<div class="flex-column footer_linkstyle">
+										<div class="footer_linkmag">
+											<div class="colorbai" v-text="buttonNav[0].childNavs[0].name"></div>
+											<template v-for="(saasItem,index) in buttonNav[0].childNavs[0].childNavs">
+												<a v-if="saasItem.link" :href="saasItem.link">{{saasItem.name}}</a>
+												<a v-else>{{saasItem.name}}</a>
+											</template>
+										</div>
+										<div class="">
+											<div class="colorbai" v-text="buttonNav[0].childNavs[1].name"></div>
+
+											<template v-for="(saasItem,index) in buttonNav[0].childNavs[1].childNavs">
+												<a v-if="saasItem.link" :href="saasItem.link">{{saasItem.name}}</a>
+												<a v-else>{{saasItem.name}}</a>
+											</template>
+										</div>
+									</div>
+								</div>
+								<div>
+									<div class="homeHead_appleStytle colorbai" v-text="buttonNav[1].name"></div>
+									<div class="flex-column footer_linkstyle">
+										<div class="footer_linkmag">
+											<div class="colorbai" v-text="buttonNav[1].childNavs[0].name"></div>
+
+											<template v-for="(solutionItem,index) in buttonNav[1].childNavs[0].childNavs">
+												<a v-if="solutionItem.link" :href="solutionItem.link">{{solutionItem.name}}</a>
+												<a v-else>{{solutionItem.name}}</a>
+											</template>
+										</div>
+										<div class="">
+											<div class="colorbai" v-text="buttonNav[1].childNavs[1].name"></div>
+
+											<template v-for="(solutionItem,index) in buttonNav[1].childNavs[1].childNavs">
+												<a v-if="solutionItem.link" :href="solutionItem.link">{{solutionItem.name}}</a>
+												<a v-else>{{solutionItem.name}}</a>
+											</template>
+										</div>
+									</div>
+								</div>
+								<div>
+									<div class="homeHead_appleStytle colorbai" v-text="buttonNav[2].name"></div>
+									<a class="footer_linkstyle" :href="buttonNav[2].childNavs[0].link" v-text="buttonNav[2].childNavs[0].name">客户案例</a>
+								</div>
+								<div>
+									<div class="homeHead_appleStytle colorbai" v-text="buttonNav[3].name"></div>
+									<div class="flex-column footer_linkstyle">
+										<div class="footer_linkmag">
+											<template v-for="(infoItem,index) in buttonNav[3].childNavs">
+												<a :class="index==0?'footer_firstlinkmag':''" v-if="infoItem.link" :href="infoItem.link">{{infoItem.name}}</a>
+												<a v-else>{{infoItem.name}}</a>
+											</template>
+										</div>
+									</div>
+								</div>
+								<div>
+									<div class="homeHead_appleStytle colorbai" v-text="buttonNav[4].name"></div>
+									<div class="flex-column footer_linkstyle">
+										<div class="footer_linkmag">
+											<template v-for="(aboutItem,index) in buttonNav[4].childNavs">
+												<a :class="index==0?'footer_firstlinkmag':''" v-if="aboutItem.link" :href="aboutItem.link">{{aboutItem.name}}</a>
+												<a v-else>{{aboutItem.name}}</a>
+											</template>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+						</div>
+						<div class="f14 flex-column footer_topstyle footer_aboutstyle">
+							<div class="blogroll">友情链接</div>
+							<a v-for="item in blogrollList" :rel="item.linkRelation" :href="item.link">{{item.title}}</a>
+						</div>
+					</div>
+					<div class="f14 tac footer_bottom flex-column flex-center">
+						<div>版权所有 © 2021 深圳市企企通科技有限公司<a href="https://beian.miit.gov.cn/#/Integrated/index" class="footer_bottom_num" target="_blank">粤ICP备15109055号</a></div>
+						<a href="#" class="footer_bottomtext">隐私政策</a>
+						<a href="#">网站声明</a>
+						<a href="https://51qqt.com/sitemap.xml" style="margin-left: 40px;">网站地图</a>
+					</div>
+				</div>
+			</div>
+			<div class="bothei"></div>
+			<div class="bgbai flex-column flex-between PingFangSCMediumBanner homephone_bot">
+				<div class="flex-column f14 homephone_bot_left" @click="showregistermodal('',1,'')">
+					<div class="homephone_bot_img"><img src="https://51qqt.com/img/homePhonebot1.png" class="imgsize"></div>
+					<div>注册体验</div>
+				</div>
+				<a class="flex-column f14 homephone_bot_right" href="tel:400-835-1881">
+					<div class="homephone_bot_img"><img src="https://51qqt.com/img/homePhonebot2.png" class="imgsize"></div>
+					<div>电话咨询</div>
+				</a>
+			</div>
+			<div class="register_modal flex-column flex-middle" v-if="showmodel">
+				<div class="registe_form">
+					<div class="registe_form_cancel" @click="hederegistermodal"><img src="https://51qqt.com/img/home114.png" class="imgsize" alt=""></div>
+					<div class="registe_form_bg"><img src="https://51qqt.com/img/home47.png" class="imgsize" alt=""></div>
+					<div class="registe_form_title homeHead_appleStytle"><span class="colorblue">立即构建</span>企业数字化采购协同平台</div>
+					<div class="f16 flex-column flex-middle registe_form_magbot">
+						<div class="registe_form_text PingFangSCMedium">联系人：</div>
+						<div class="registe_form_input"><input v-model="name" type="text" class="imgsize" placeholder="请输入您的姓名"></div>
+					</div>
+					<div class="f16 flex-column flex-middle registe_form_magbot">
+						<div class="registe_form_text PingFangSCMedium">公司名称：</div>
+						<div class="registe_form_input"><input type="text" v-model="companyName" class="imgsize" placeholder="请输入您的公司名全称"></div>
+					</div>
+					<div class="f16 flex-column flex-middle registe_form_magbot">
+						<div class="registe_form_text PingFangSCMedium">手机号码：</div>
+						<div class="registe_form_input"><input type="number" v-model="telephone" class="imgsize" placeholder="请输入您的手机号码"></div>
+					</div>
+					<div class="f16 flex-column flex-middle registe_form_Vercodemagbot">
+						<div class="registe_form_text PingFangSCMedium">验证码：</div>
+						<div class="registe_form_Vercode"><input type="number" v-model="smsCode" class="imgsize" placeholder="请输入验证码"></div>
+						<div class="registe_form_codebut colorbai" @click="getcode">获取验证码</div>
+					</div>
+					<div class="f16 registe_form_submit PingFangSCMedium colorbai" @click="submitfrom()">立即提交</div>
+				</div>
+			</div>
+			<div class="register_modal flex-column flex-middle" v-if="showVidio">
+				<div class="Vidio_padd_wei flex-column flex-middle flex-center porelative">
+					<div class="videoContainer">
+						<div class="colorbai videoTitleText">{{vidiotitle}}</div>
+						<div class="colorbai videoDescriptionText">{{videoDescription}}</div>
+						<video
+							controls
+							preload="auto"
+							width="878"
+							height="520"
+							:src="vidiourl"
+							:poster="imageUrl"
+							autoplay
+							style="margin-bottom: 111px;margin-top: 16px;"
+						>
+						</video>
+					</div>
+					<div class="videoListContainer" ref="videoListContainer" @scroll="scollerFunc($event)">
+						<div v-for="(item,index) in videoList" @click="showvidiomodal(item)" class="flex-column flex-center videoListItem">
+                            <div class="video_img">
+                                <img  width="282" height="158" :src="item.image"/>
+                            </div>
+							<div class="videoListTitleText">{{item.title}}</div>
+							<div class="colorbai videoListDescriptionText">{{item.description}}</div>
+						</div>
+					</div>
+					<div class="Vidio_cancel" @click="hidevidiomodal"><img src="https://51qqt.com/img/home165.png" class="imgsize" alt=""></div>
+				</div>
+
+			</div>
+            <div class="rightView" v-if="kefuInfo[1]">
+                <div class="rightView_kf_none">
+
+				</div>
+                <div class="rightView_trial" @click="showregistermodal(2)">
+					<div class="rightView_trialImg"><img :src="kefuInfo[1][0].image" class="imgsize"></div>
+					<div class="f14 rightView_trialText">{{kefuInfo[1][0].text}}</div>
+				</div>
+				<div class="rightView_trial">
+					<div class="rightView_trialImg"><img :src="kefuInfo[1][1].image" class="imgsize"></div>
+					<div class="f14 rightView_trialText">{{kefuInfo[1][1].text}}</div>
+					<div class="rightView_chatUs">
+						<div class="rightView_chatUsImg"><img :src="kefuInfo[1][2].image" class="imgsize"></div>
+						<div class="f14 tac rightView_chatUsText">{{kefuInfo[1][2].text}}</div>
+					</div>
+				</div>
+            </div>
+		</div>
+	</body>
+</html>
+<script>
+	var vm = new Vue({
+		el:'#app',
+		data(){
+			return {
+				leaveWordType:'',
+                industryList:[
+					{name:'全部',type:'news.html'},
+					{name:'企业资讯',type:'1.html'},
+					{name:'市场活动',type:'events.html'},
+					{name:'干货分享',type:'4.html'},
+					{name:'分析报告',type:'reports.html'},
+					{name:'微视频',type:'videos.html'}
+				],
+				InfoData:[],
+				hotList:[],
+                Pagenun:[],
+				showmodel:false,
+                currentPage:1,
+				videoCurrentPage:1,
+				videoTotalPage:0,
+                typeIndex:'1.html',
+				showVidio:false,
+				vidiotitle:'',
+				videoDescription:'',
+				vidiourl:'',
+				imageUrl:'',
+				blogrollList:[],
+				totalPage:0,
+				showFullTitle:-1,
+				videoList:[],
+				name:'',
+				companyName:'',
+				telephone:'',
+				smsCode:'',
+                buttonNav:[],
+				baseInfo:{},
+				kefuInfo:{},
+				topNav:[],
+				topNavShow:false,
+				bottomBanner:null,
+			}
+		},
+		watch: {
+		},
+		created(){
+			getHost('els')
+			this.getdata()
+			this.gethotdata()
+		},
+		mounted(){
+
+            getSeo(47)
+            this.getBottomNav()
+			// window.addEventListener('scroll', this.scollerFunc, true)
+		},
+		methods: {
+			getBottomNav(){
+				var _getBottomNav = p => get('/websiteNav/noToken/queryByType', p);
+				_getBottomNav({
+					type:2,
+				})
+						.then(res => {
+							console.log(res)
+							if (res.code==200){
+								this.buttonNav=res.result;
+							}
+
+						})
+						.catch(err => {
+							console.log(err,'_getBottomNav获取数据异常');
+						})
+			},
+			changenavicon(e){
+					if(e.currentTarget.style.transform=='translateY(4px) rotate(180deg)'){
+						e.currentTarget.parentElement.nextElementSibling.style.display = 'none'
+						e.currentTarget.parentElement.style.color = '#222222'
+						e.currentTarget.style.transform = "none"
+					}else{
+						e.currentTarget.parentElement.nextElementSibling.style.display = 'block'
+						e.currentTarget.parentElement.style.color = '#005CEF'
+						e.currentTarget.style.transform = "translateY(4px) rotate(180deg)"
+					}
+				},
+			showAiFanFan(){
+				setTimeout(()=>{
+					$("#newBridge").attr("style","display: block !important;z-index: 2 !important")
+					$("#nb_icon_wrap").attr("style","margin-top:-32px !important;margin-right:22px !important;")
+				},1000)
+			},
+			getdata(){
+				that = this
+				var _getData = p => get('/information/noToken/frontList', p);
+				_getData({
+					type:0,
+					pageNo:this.currentPage,
+					pageSize:12
+				}).then(res => {
+					that.InfoData = res.result.records
+					that.totalPage=res.result.pages
+					that.Pagenun = []
+					for(let i=1;i<=res.result.pages;i++){
+						that.Pagenun.push(i)
+					}
+					if(res.result.pages==0){
+						that.Pagenun = [1]
+					}
+				}).catch(err => {
+					console.log(err,'_getData获取数据异常');
+				})
+			},
+			gethotdata(){
+				that = this
+				var _gethotData = p => get('/information/noToken/hot', p);
+				_gethotData({}).then(res => {
+					that.hotList = res.result
+					
+				}).catch(err => {
+					console.log(err,'_gethotData获取数据异常');
+				})
+			},
+			getVideoData(){
+				that = this
+				var _getVideoData = p => get('/information/noToken/frontList', p);
+				_getVideoData({
+					type:4,
+					pageNo:this.videoCurrentPage,
+					pageSize:50
+				}).then(res => {
+					res.result.records.forEach(item=>{
+						that.videoList.push(item)
+					})
+					console.log(that.videoList)
+					that.videoTotalPage=res.result.pages
+				}).catch(err => {
+					console.log(err,'_getVideoData获取数据异常');
+				})
+			},
+			showregistermodal(leaveWordType){
+				this.showmodel = true
+				this.leaveWordType='49-'+leaveWordType;
+			},
+			hederegistermodal(){
+				this.showmodel = false
+			},
+            changetype(type){
+                if (this.typeIndex!=type){
+                    if (type!='news.html'){
+                        window.location.href="https://51qqt.com/news/"+type
+                    }else {
+                        window.location.href="https://51qqt.com/"+type
+                    }
+                }
+			},
+            changePage(item){
+				this.currentPage = item
+				this.getdata()
+			},
+            prevPage(){
+				if(this.currentPage!=1){
+					this.currentPage--
+					this.getdata()
+				}
+			},
+			nextPage(){
+				if(this.currentPage!=this.Pagenun.length){
+					this.currentPage++
+					this.getdata()
+				}
+			},
+            tznewsInfo(item){
+				if (item.type!=4){
+					window.location.href = 'https://51qqt.com/newsInfo.html?id='+item.id+"&type=0"
+				}else {
+					this.showvidiomodal(item)
+				}
+
+            },
+			showvidiomodal(item){
+				this.videoDescription=item.description
+				this.vidiotitle = item.title
+				this.vidiourl = item.video
+				this.imageUrl=item.image
+				this.showVidio = true
+				this.videoList=[]
+				var _viewsCount = p => get('/information/noToken/viewsCount', p);
+				_viewsCount({
+					id:item.id
+				}).then(res => {
+					console.log("数据统计返回数据：",res)
+				}).catch(err => {
+					console.log(err,'_viewsCount获取数据异常');
+				})
+				this.getVideoData()
+			},
+			hidevidiomodal(){
+				this.showVidio = false
+			},
+			showPage(item){
+				if (this.currentPage<3&&item<6){
+					return true;
+				}else if (this.currentPage>this.totalPage-2){
+					if (item>this.totalPage-5){
+						return true
+					}
+				}else{
+					if (item<this.currentPage+3&&item>this.currentPage-3){
+						return true;
+					}
+				}
+				return false
+			},
+			overFun(index){
+				this.showFullTitle=index;
+			},
+			outFun(index){
+				this.showFullTitle=-1;
+			},
+			scollerFunc(el) {
+				let dom = el.target;
+				const scrollDistance = dom.scrollHeight - dom.scrollTop - dom.clientHeight;
+				if (scrollDistance <= 1) {//等于0证明已经到底，可以请求接口
+					console.log("触底了")
+					if (this.videoCurrentPage<this.videoTotalPage){
+						this.videoCurrentPage=this.videoCurrentPage+1
+						this.getVideoData()
+					}else {
+						// alert("没有更多数据了")
+					}
+				}
+			},
+			getcode(){
+				const reg = /^((0\d{2,3}-\d{7,8})|(1[3456789]\d{9}))$/
+				if(!reg.test(this.telephone)){
+					window.alert("请输入正确的电话号码！");
+					return false
+				}
+				var _getcode = p => post('/account/sms', p,'json');
+				_getcode({
+					mobile:this.telephone,
+					smsmode:"1"
+				})
+						.then(res => {
+							window.alert(res.message);
+						})
+						.catch(err => {
+							console.log(err,'_getcode获取数据异常');
+						})
+			},
+			submitfrom(){
+				if(this.name==''){
+					window.alert("联系人不能为空！");
+					return false
+				}
+				if(this.companyName==''){
+					window.alert("公司名称不能为空！");
+					return false
+				}
+				const reg = /^((0\d{2,3}-\d{7,8})|(1[3456789]\d{9}))$/
+				if(!reg.test(this.telephone)){
+					window.alert("请输入正确的电话号码！");
+					return false
+				}
+				if(this.smsCode==''){
+					window.alert("验证码不能为空！");
+					return false
+				}
+				var _getcode = p => post('/website/websiteUserInfo/noToken/add', p,'json');
+				_getcode({
+					name:this.name,
+					companyName:this.companyName,
+					telephone:this.telephone,
+					smsCode:this.smsCode,
+					registerModule:this.leaveWordType,
+				})
+						.then(res => {
+							if (res.code==200){
+								window.alert('提交成功！');
+								this.showmodel = false
+							}else if (res.code==1000){
+						window.alert('已提交信息，无需重复提交！');
+					}else {
+						window.alert('验证码错误！');
+					}
+						})
+						.catch(err => {
+							console.log(err,'_getcode获取数据异常');
+						})
+			},
+		},
+		computed:{},
+	})
+</script>
+<script src="https://51qqt.com/js/navigation.js"></script>

@@ -1,0 +1,35 @@
+.honor_banner{width: 100%;}
+.honor_banner_title{font-size: 72px;height: 100px;line-height: 100px;}
+.honor_banner_text{font-size: 36px;height: 50px;line-height: 50px;margin-top: 8px;}
+.honor_certificate{padding: 60px 20px;}
+.honor_title{font-size: 36px;height: 50px;line-height: 50px;margin-bottom: 50px;}
+.honor_certificate_list{padding: 21px 20px;background: #FFFFFF;border-radius: 4px;border: 1px solid #EBEBEB;cursor: pointer;margin: 17px 0px;margin-right: 18px;transition: all 0.3s}
+.honor_certificate_list:hover{box-shadow: 0px 8px 20px 0px rgba(166,180,208,0.2);transform: translateY(-10px);}
+.honor_certificate_list:hover img{transform: scale(1.1);}
+.honor_certificate_img>img{transition: all 0.3s}
+.honor_certificate_img{width: 240px;height: 336px;margin-bottom: 20px;background: #F7F8FA;overflow: hidden;transition:  all 0.3s;}
+.honor_text{line-height: 25px;width: 208px;height: 50px;margin: 20px auto 0;}
+.honor_certificate_text{line-height: 25px;width: 208px;height: 50px;margin: 20px auto 0;}
+.honor_certificate_navs{margin-bottom: 28px;}
+.honor_certificate_bg{background: #F7F8FA;}
+.honor_qualifications_img{width: 240px;height: 160px;background: #F7F8FA;overflow: hidden;}
+.honor_qualifications_img>img{transition: all 0.3s}
+.navNone{
+    display: none;
+}
+@media screen and (max-width:582px) {
+    .honor_banner{height: auto;width: 100%;margin-top: 57px;min-height: 200px;}
+    .honor_banner_title{font-size: 30px;margin-top: 55px;height: 42px;line-height: 42px;}
+    .honor_banner_text{margin-top: 11px;font-size: 16px;line-height: 22px;height: 22px;}
+    .honor_title{font-size: 20px;margin-bottom: 30px;height: 28px;line-height: 28px;}
+    .honor_certificate_list{margin:0 16px 0 0;padding: 16px;}
+    .honor_certificate_list:last-child{margin-right: 0px;}
+    .honor_certificate_img{width: 120px;height: 168px;margin-bottom: 8px;}
+    .honor_text{width: 120px;font-size: 14px;line-height: 24px;height: auto;margin-top: 0;}
+    .honor_certificate_navs{position: relative;height: 306px;overflow: scroll;}
+    .displayBox{position: absolute;flex-wrap: nowrap;}
+    .honor_qualifications_img{width: 120px;height: 80px;}
+    .honor_certificate_text{font-size: 14px;line-height: 24px;height: auto;width: 120px;}
+    .honor_certificate{padding: 30px 16px;}
+    .honor_certificate_phonexia{height: 230px;}
+}

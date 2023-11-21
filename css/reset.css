@@ -1,0 +1,81 @@
+body,div,ol,ul,li,p,h1,h2,h3,h4,h5,h6{
+	margin:0;
+	padding:0;
+}
+ol,li,ul{
+	list-style: none;
+}
+iframe{
+	display: block;
+}
+/*p{*/
+/*	color:#8c9398;*/
+/*}*/
+a{
+	text-decoration: none;
+	color: inherit;
+	display: inline-block;
+}
+label,span{
+	display: inline-block;
+}
+body{
+	color:#222;
+	font-family: PingFangSC,helvetica neue,hiragino sans gb,arial,microsoft yahei ui,microsoft yahei,simsun,sans-serif;
+ 	-webkit-font-smoothing: antialiased;
+	font-weight: 400;
+}
+
+html{
+	font-size:16px;
+}
+input{border: none;border-style: none;outline: none;padding: 0;}
+/* 去掉数字输入框箭头 */
+/* chrome */ 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button { 
+    -webkit-appearance: none; 
+}
+/* 火狐浏览器 */
+input[type="number"]{ 
+    -moz-appearance: textfield; 
+}
+.container{
+	margin:0 auto;
+}
+
+.container::after{
+	content:"";
+	width:0;
+	height:0;
+	display: block;
+	overflow: hidden;
+	clear: both;
+}
+
+
+/* 媒体查询 设置内容居中 */
+
+/* x <= 768px 小尺寸 */
+@media screen and (max-width:992px){
+	.container{
+		width:95%;
+	}
+	.head_fon_size{font-size:30px;}
+}
+
+
+/* x >= 992px 中等尺寸*/
+@media screen and (min-width:992px){
+	.container{
+		width:970px;
+	}
+	.head_fon_size{font-size:30px;}
+}
+
+/* x>= 1200  大尺寸*/
+@media screen and (min-width:1200px){
+	.container{
+		width:1170px;
+	}
+}

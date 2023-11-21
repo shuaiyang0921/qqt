@@ -1,0 +1,27 @@
+.contactUs_bg{background: #F7F8FA;border-radius: 0px 0px 60px 60px;margin: 0 50px;padding: 70px;margin-bottom: 72px;}
+.contactUs_title{height: 50px;font-size: 36px;line-height: 50px;padding: 20px 0 60px 0;}
+.contactUs_info{margin-bottom: 50px;}
+.contactUs_info_left{padding: 32px 40px;background: #FFFFFF;border-radius: 4px;width: 420px;margin-right: 40px;position: relative;}
+.contactUs_info_left::after{position: absolute;content: "";width: 64px;height: 52px;background: url(https://51qqt.com/images/about/contactUs4.png) no-repeat center center;background-size: cover;top: 32px;right: 40px;}
+.contactUs_info_leftTitle{height: 37px;font-size: 26px;line-height: 37px;margin-bottom: 16px;}
+.contactUs_info_leftText{height: 45px;font-size: 32px;color: #005CEF;line-height: 45px;margin-bottom: 30px;}
+.contactUs_info_leftMailbox{height: 28px;line-height: 28px;}
+.contactUs_info_leftMailboximg{width: 22px;height: 18px;margin-right: 10px;margin-top: 2px;}
+.contactUs_info_right{width: calc(100% - 652px);background: url(https://51qqt.com/images/about/contactUs2.png) no-repeat center center;background-size: cover;padding: 20px 56px;}
+.contactUs_info_rightImg{width: 140px;height: 140px;}
+.contactUs_info_rightText{height: 22px;color: #005CEF;line-height: 22px;margin: 5px 0;}
+.contactUs_info_rightQRcode{padding: 8px 20px 0 20px;background: #F7F8FA;}
+.contactUs_work{background: #FFFFFF;border-radius: 4px;border: 1px solid #EBEBEB;padding-bottom: 30px;margin: 15px 0;transition: all 0.3s}
+.contactUs_work:hover{box-shadow: 0px 8px 20px 0px rgba(166,180,208,0.2);transform: translateY(-10px);}
+.contactUs_workImg{width: 384px;height: 160px;}
+.contactUs_workTitle{height: 30px;font-size: 22px;line-height: 30px;margin: 24px 40px 12px 40px;}
+.contactUs_workText{color: #555555;line-height: 24px;height: 48px;margin: 0 40px;width: 304px;}
+.contactUs_bottom{margin-top: 35px;color: #222222;}
+@media screen and (max-width:582px) {
+    .contactUs_bg{margin:0 16px 30px 16px;padding: 30px 16px;border-radius: 0px 0px 40px 40px;}
+    .contactUs_workImg{width: 100%;height: auto;}
+    .contactUs_work{margin: 0;width: 100%;margin-bottom: 16px;padding-bottom:20px;}
+    .contactUs_workTitle{font-size: 18px;height: 25px;line-height: 25px;margin: 20px 20px 10px 20px;}
+    .contactUs_workText{margin: 0 20px;width: calc(100% - 40px);height: auto;font-size: 14px;}
+    .contactUs_bottom{margin-top: 30px;}
+}

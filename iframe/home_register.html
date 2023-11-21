@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,initial-scale=1,user-scalable=no" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+		<title>企企通</title>
+		<link rel="shortcut icon" href="https://51qqt.com/img/qqtlogo.ico" />
+		<meta  name="Keywords" content="">
+		<meta  name="Description" content="">
+		<link rel="stylesheet" href="https://51qqt.com/css/flex-layout.css" />
+		<link rel="stylesheet" href="https://51qqt.com/css/reset.css" />
+        <!-- 头部底部样式 -->
+		<link rel="stylesheet" href="https://51qqt.com/css/index.css" />
+		<!-- 首页样式 -->
+		<link rel="stylesheet" href="https://51qqt.com/css/homestyle.css" />
+		<script src="https://51qqt.com/js/jquery.min.js"></script>
+		<script src="https://51qqt.com/js/load.js"></script>
+		<script type="text/javascript">
+			load('axios')
+		</script>
+	</head>
+	<body>
+		<div id="appIframe">
+            <div class="home_register flex-column flex-center flex-middle colorbai">
+				<div class="PingFangSCMedium">
+					<div class="home_register_text">开启数字化供应链与采购新体验</div>
+					<div class="tar">赋能企业数字化转型与变革</div>
+				</div>
+				<a class="f18 homeHead_registertil home_register_but  homeHead_appleStytle  colorbai" href="#">注册体验</a>
+			</div>
+		</div>
+	</body>
+	
+	<script>
+		var vm = new Vue({
+			el:'#appIframe',
+			data(){
+				return {
+					caseCompanylist:[],
+				}
+			},
+			watch: {
+			},
+			created(){
+                getHost('els')
+				this.getdata()
+			},
+			mounted(){
+
+			
+			},
+			methods: {
+                getdata(){
+                    let that = this
+                    // 获取500强图片
+					var _getcaseCompanylist = p => get('/consumer/noToken/queryLogo', p);
+					_getcaseCompanylist({type:'1'})
+					.then(res => {
+						that.caseCompanylist = res.result
+					})
+					.catch(err => {
+						console.log(err,'_getcaseCompanylist获取数据异常');
+					})
+                }
+			},
+			computed:{
+			},
+		})
+    </script>
+</html>

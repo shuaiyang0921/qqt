@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,initial-scale=1,user-scalable=no" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>企企通-注册</title>
+		<link rel="shortcut icon" href="https://51qqt.com/img/qqtlogo.ico" />
+		<meta  name="Keywords" content="">
+		<meta  name="Description" content="">
+		<link rel="stylesheet" href="https://51qqt.com/css/flex-layout.css" />
+		<link rel="stylesheet" href="https://51qqt.com/css/reset.css" />
+		<!-- 头部底部样式 -->
+		<link rel="stylesheet" href="https://51qqt.com/css/index.css" />
+		<!-- 首页样式 -->
+		<link rel="stylesheet" href="https://51qqt.com/css/homestyle.css" />
+		<script src="https://51qqt.com/js/jquery.min.js"></script>
+		<script src="https://51qqt.com/js/load.js"></script>
+		<script type="text/javascript">
+			load('axios')
+		</script>
+	</head>
+	<body>
+		<div id="app" v-cloak>
+			<div class="flex-column flex-middle registe_formphone">
+                <div class="f24 homeHead_appleStytle tac registe_formphone_title"><span class="colorblue">立即构建</span><br/>企业数字化采购协同平台</div>
+                <div class="f16" style="width: 100%;">
+                    <div class="PingFangSCMedium registe_formphone_magbot">联系人：</div>
+                    <div class="registe_formphone_input" :class="nameverify?'':'registe_formphone_inputbot'"><input v-model="name" type="text" class="imgsize" placeholder="请输入您的姓名"></div>
+                    <div class="f12 registe_formphone_verify" v-if="nameverify==true">联系人不能为空！</div>
+                    <div class=" PingFangSCMedium registe_formphone_magbot">公司名称：</div>
+                    <div class="registe_formphone_input" :class="companyNameverify?'':'registe_formphone_inputbot'"><input type="text" v-model="companyName" class="imgsize" placeholder="请输入您的公司名全称"></div>
+                    <div class="f12 registe_formphone_verify" v-if="companyNameverify">公司名称不能为空！</div>
+                    <div class=" PingFangSCMedium registe_formphone_magbot">手机号码：</div>
+                    <div class="registe_formphone_input" :class="telephoneverify?'':'registe_formphone_inputbot'"><input type="number" v-model="telephone" class="imgsize" placeholder="请输入您的手机号码"></div>
+                    <div class="f12 registe_formphone_verify" v-if="telephoneverify">请输入正确的电话号码！</div>
+                    <div class="PingFangSCMedium registe_formphone_magbot">验证码：</div>
+                    <div class="flex-column " :class="smsCodeverify?'registe_formphone_Vercodeverify':'registe_formphone_Vercode'">
+                        <div class="registe_formphone_VercodeInput"><input type="number" v-model="smsCode" class="imgsize" placeholder="请输入验证码"></div>
+                        <div class="registe_form_codebut colorbai" @click="getcode">获取验证码</div>
+                        <div class="f12 registe_formphone_verify" v-if="smsCodeverify">验证码不能为空！</div>
+                    </div>
+                    
+                </div>
+                <div class="PingFangSCMedium colorbai tac registe_formphone_submit" @click="submitfrom()">立即提交</div>
+			</div>
+		</div>
+	</body>
+</html>
+<script>
+	var vm = new Vue({
+		el:'#app',
+		data(){
+			return {
+                name:'',
+				companyName:'',
+				telephone:'',
+				smsCode:'',
+                nameverify:false,
+                companyNameverify:false,
+                telephoneverify:false,
+                smsCodeverify:false,
+				registerModule:'54-1'
+			}
+		},
+		watch: {
+		},
+		created(){
+			getHost('els')
+			this.clientWidth = document.documentElement.clientWidth
+			new WOW().init();
+		},
+		mounted(){
+		},
+		methods: {
+            getcode(){
+				const reg = /^((0\d{2,3}-\d{7,8})|(1[3456789]\d{9}))$/
+				if(!reg.test(this.telephone)){
+					this.telephoneverify = true
+					return false
+				}
+				var _getcode = p => post('/account/sms', p,'json');
+				_getcode({
+					mobile:this.telephone,
+					smsmode:"1"
+				})
+						.then(res => {
+							window.alert(res.message);
+						})
+						.catch(err => {
+							console.log(err,'_getcode获取数据异常');
+						})
+			},
+            submitfrom(){
+                this.nameverify = false
+                this.companyNameverify = false
+                this.telephoneverify = false
+                this.smsCodeverify = false
+				if(this.name==''){
+					this.nameverify = true
+                    this.$forceUpdate()
+					return
+				}
+				if(this.companyName==''){
+					this.companyNameverify = true
+                    this.$forceUpdate()
+					return false
+				}
+				const reg = /^((0\d{2,3}-\d{7,8})|(1[3456789]\d{9}))$/
+				if(!reg.test(this.telephone)){
+					this.telephoneverify = true
+                    this.$forceUpdate()
+					return false
+				}
+				if(this.smsCode==''){
+					this.smsCodeverify = true
+                    this.$forceUpdate()
+					return false
+				}
+				var _getcode = p => post('/website/websiteUserInfo/noToken/add', p,'json');
+				_getcode({
+					name:this.name,
+					companyName:this.companyName,
+					telephone:this.telephone,
+					smsCode:this.smsCode,
+					registerModule: this.registerModule,
+				}).then(res => {
+					if (res.code==200){
+						window.alert('提交成功！');
+						window.location.href="https://q3saas.51qqt.com/user/login?redirect=%2F"
+					}else if (res.code==1000){
+						window.alert('已提交信息，无需重复提交！');
+					}else {
+						window.alert('验证码错误！');
+					}
+				}).catch(err => {
+					console.log(err,'_getcode获取数据异常');
+				})
+			},
+		},
+		computed:{
+
+		},
+	})
+</script>
+<!-- <script src="https://51qqt.com/js/navigation.js"></script> -->

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,initial-scale=1,user-scalable=no" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+		<title>企企通</title>
+		<link rel="shortcut icon" href="https://51qqt.com/img/qqtlogo.ico" />
+		<meta  name="Keywords" content="">
+		<meta  name="Description" content="">
+		<link rel="stylesheet" href="https://51qqt.com/css/flex-layout.css" />
+		<link rel="stylesheet" href="https://51qqt.com/css/reset.css" />
+        <!-- 头部底部样式 -->
+		<link rel="stylesheet" href="https://51qqt.com/css/index.css" />
+		<!-- 首页样式 -->
+		<link rel="stylesheet" href="https://51qqt.com/css/homestyle.css" />
+		<link rel="stylesheet" href="https://51qqt.com/css/caseTab.css" />
+		<script src="https://51qqt.com/js/jquery.min.js"></script>
+		<script src="https://51qqt.com/js/load.js"></script>
+		<script type="text/javascript">
+			load('axios')
+		</script>
+	</head>
+	<body>
+		<div id="appIframe">
+            <div class="home_Case">
+				<div class="maxwidth">
+					<div class="tac home_product_title PingFangSCMedium">成就更多客户成功，他们都选择了企企通</div>
+					<div>
+						<div :class="index==0?'flex-column home_Case_info home_Case_info_show':'flex-column home_Case_info'" v-for="(item,index) in CaseList">
+							<div class="home_Caseimg_not_index"><img :src="item.backgroundImage" class="imgsize" :alt="item.tag"></div>
+							<div class="home_Case_inforight bgbai">
+								<div class="flex-column flex-between">
+									<div class="f22 PingFangSCMedium fontWeightNormal tags" style="">{{item.tags}}</div>
+								</div>
+								<div class="f18 home_Case_inforight_title_case_tab tab_intro" v-html="item.intro"></div>
+	<!--							<div class="home_Case_inforightImg"><img :src="item.logo" class="imgsize" :alt="item.tag"></div>-->
+							</div>
+						</div>
+					</div>
+					<div class="home_Case_tabs flex-column flex-center">
+						<div v-for="(item,index) in CaseList" :class="Caseindex==index?'home_Case_tab':''" @click="changeCaseindex(index)"></div>
+					</div>
+					<div class="scfMoreCase"><a class="f16 colorbai home_Case_More" href="https://51qqt.com/case-study.html" target="_blank">查看更多案例</a></div>
+				</div>
+			</div>
+		</div>
+	</body>
+	
+	<script>
+		var vm = new Vue({
+            el: '#appIframe',
+			data(){
+				return {
+					CaseList:[],
+                    Caseindex:0,
+					pageName: '7'
+				}
+			},
+			watch: {
+			},
+			created(){
+                getHost('els')
+				if(getQueryVariable('name')){
+					this.pageName = getQueryVariable('name')
+				}
+			    this.getdata()
+
+			},
+			mounted(){
+
+				if(getQueryVariable('name')){
+					this.pageName = getQueryVariable('name')
+				}
+            },
+			methods: {
+                getdata(){
+                    that = this
+                    var _getCaseData = p => get('/works/caseWork/noToken/queryByHot', p);
+                    _getCaseData({industryOrAreas: that.pageName})
+                    .then(res => {
+                        that.CaseList = res.result;
+                    })
+                    .catch(err => {
+                        console.log(err,'_getCaseData获取数据异常');
+                    })
+                    setInterval(()=>{
+						if(that.Caseindex>=that.CaseList.length-1){
+							that.Caseindex=0
+						}else{
+							that.Caseindex++;
+						}
+						$('.home_Case_tabs>div').eq(that.Caseindex).addClass('home_Case_tab').siblings().removeClass('home_Case_tab')
+						$('.home_Case_info').eq(that.Caseindex).addClass('home_Case_info_show').siblings().removeClass('home_Case_info_show')
+                    },3000);
+                },
+                changeCaseindex(index){
+                    this.Caseindex = index
+					$('.home_Case_tabs>div').eq(this.Caseindex).addClass('home_Case_tab').siblings().removeClass('home_Case_tab')
+					$('.home_Case_info').eq(this.Caseindex).addClass('home_Case_info_show').siblings().removeClass('home_Case_info_show')
+                }
+			},
+			computed:{
+			},
+		})
+    </script>
+</html>

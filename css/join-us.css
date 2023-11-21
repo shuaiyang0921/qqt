@@ -1,0 +1,64 @@
+.joinUs_banner{width: 100%;}
+.joinUs_banner_text{font-size: 36px;height: 50px;line-height: 50px;margin-top: 218px;}
+.joinUs_banner_but{margin: 0px auto;margin-top: 32px;}
+.joinUs_imglists{padding-top: 60px;}
+.joinUs_imglist1{margin-bottom: 4px;}
+.joinUs_title{font-size: 36px;height: 50px;line-height: 50px;margin-bottom: 60px;}
+.joinUs_img1{width: 959px;height: 480px;margin-right: 3px;}
+.joinUs_img2{width: 478px;height: 480px;}
+.joinUs_img3{width: 478px;height: 240px;}
+.joinUs_img_mag{margin: 0 3px;}
+.joinUs_post{padding: 60px 20px 0 20px;background: rgba(247, 248, 250, 1)}
+
+.joinUs_post_list{padding: 30px 40px;background: #FFFFFF;border-radius: 4px;border: 1px solid #EBEBEB;width: 304px;margin: 15px 0;cursor: pointer;}
+.joinUs_post_list_last{padding: 30px 40px;border-radius: 4px;border: 1px solid #F7F8FA;width: 304px;margin: 15px 0;background: rgba(247, 248, 250, 1);}
+.joinUs_post_listTitle{height: 28px;line-height: 28px;margin-bottom: 18px;}
+.joinUs_post_address{color: #555555;height: 20px;line-height: 20px;border-bottom: 1px solid #EBEBEB;padding-bottom: 16px;}
+.joinUs_post_icon{width: 14px;height: 14px;margin-right: 8px;}
+.joinUs_post_department{color: #555555;height: 20px;line-height: 20px;margin-top: 16px;}
+.joinUs_post_listlabel{height: 20px;line-height: 20px;padding: 3px 10px;background: #FF761A;border-radius: 2px;}
+.joinUs_job{height: 40px;font-size: 28px;line-height: 40px;margin-bottom: 10px;}
+.joinUs_website{height: 40px;font-size: 28px;line-height: 40px;border-bottom: 2px solid #FF761A;width: 237px;}
+.joinUs_post_listblue{border: 1px solid #005CEF;position: relative;}
+.joinUs_post_listblue::before{content: "";width: 0;height: 0;border-left: 14px solid transparent;border-right: 14px solid transparent;border-bottom: 14px solid #FFFFFF;position: absolute;bottom: -30px;z-index: 2;left: 30px;}
+.joinUs_post_listblue::after{content: "";width: 0;height: 0;border-left: 16px solid transparent;border-right: 16px solid transparent;border-bottom: 16px solid #EBEBEB;position: absolute;bottom: -30px;z-index: 1;left: 28px;}
+.joinUs_post_popUp{padding: 0 40px;background: #FFFFFF;border: 1px solid #EBEBEB;margin: 12px 0;position: absolute;}
+.joinUs_post_popUpTitle{height: 25px;line-height:25px;padding: 32px 0 16px 0;}
+.joinUs_post_popUpTitle span{width: 4px;height: 16px;background: #005CEF;margin-right: 10px;transform: translateY(2px);}
+.joinUs_post_popUpText{color: #555555;line-height: 28px;}
+.joinUs_post_popUpBut{padding: 13px 38px;margin: 40px 0;background: linear-gradient(270deg, #0087FF 0%, #005CEF 100%);width: 64px;border-radius: 4px;}
+.joinUs_post_popUpBut:hover{opacity: 0.8;background: linear-gradient(270deg, #FFA328 0%, #FF761A 100%);color: #FFFFFF;}
+.hrBg{
+    background: rgba(247, 248, 250, 1);
+}
+.jobDetailContainer{
+    width: 100%;
+}
+.jobDetailContainer>div{
+    background: #FFFFFF;border: 1px solid #EBEBEB;margin: 12px 0;padding: 0 40px;border-radius: 4px;
+}
+@media screen and (max-width:1440px) {
+    .joinUs_imglist1{margin-bottom:0px;}
+    .joinUs_img1,.joinUs_img2,.joinUs_img3{width: 80%;height: auto;max-height: 500px;}
+    .joinUs_img_mag{margin: 0;}
+}
+@media screen and (max-width:582px) {
+    .joinUs_banner{height: 200px;margin-top: 57px;}
+    .joinUs_banner_text{font-size: 24px;height: 33px;line-height: 33px;margin-top:62px;}
+    .joinUs_banner_but{margin-top: 20px;}
+    .joinUs_post{padding:30px 0;}
+    .joinUs_title{font-size: 20px;margin-bottom:30px;height: 28px;line-height: 28px;}
+    .joinUs_job{font-size: 18px;height: 25px;line-height: 25px;margin-bottom:8px;}
+    .joinUs_website{font-size: 18px;height: 25px;line-height: 25px;width: 158px;}
+    .joinUs_postright_img{width: 14px;height: 9px;}
+    .joinUs_postright_img img{display: block;}
+    .joinUs_post_list{padding: 16px;width: 100%;background: linear-gradient(180deg, #F2F4F7 0%, #FFFFFF 100%);box-shadow: 0px 4px 16px 0px rgba(55,99,170,0.1);border: 2px solid #FFFFFF;margin: 0;margin-bottom: 16px;}
+    .joinUs_post_list:last-of-type{margin-bottom: 0px;}
+    .joinUs_post_lists{width: 100%;}
+    .joinUs_post_listTitle{font-size: 16px;height: 22px;line-height: 22px;margin-bottom: 10px;}
+    .joinUs_post_listlabel{font-size: 12px;height: 16px;line-height: 16px;padding: 0px 4px;margin-left: 12px;}
+    .jobDetailContainer>div{margin: 0;background: #F7F8FA;padding: 0 16px;}
+    .joinUs_post_popUpTitle{height: 22px;line-height: 22px;padding: 24px 0 10px 0;}
+    .joinUs_post_popUpText{font-size: 14px;line-height: 24px;}
+    .joinUs_post_popUpBut{padding: 10px 28px;margin: 24px 0;}
+}
